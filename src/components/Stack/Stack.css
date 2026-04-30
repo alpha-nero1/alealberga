@@ -1,0 +1,225 @@
+.iso-wrap {
+  padding-top: 2rem;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: start;
+  gap: 0.85rem;
+}
+
+.iso-summary {
+  grid-column: 1 / -1;
+  border: 1px solid rgba(178, 211, 255, 0.26);
+  border-radius: 14px;
+  padding: 1rem;
+  margin: 0;
+  background:
+    radial-gradient(circle at 12% 14%, rgba(79, 212, 196, 0.12), transparent 36%),
+    rgba(9, 22, 39, 0.72);
+  box-shadow: 0 10px 24px rgba(2, 7, 20, 0.35);
+}
+
+.iso-summary-kicker {
+  margin-top: 0;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.66rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(176, 229, 255, 0.78);
+}
+
+.iso-summary-reasons {
+  display: grid;
+  gap: 0.42rem;
+}
+
+.iso-summary-copy {
+  margin: 0;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.78rem;
+  line-height: 1.42;
+  color: rgba(214, 227, 248, 0.92);
+}
+
+.iso-summary-tech {
+  color: #f0f7ff;
+  font-weight: 700;
+}
+
+.iso-summary-end {
+  margin: 0.62rem 0 0;
+  padding-top: 0.55rem;
+  border-top: 1px solid rgba(178, 211, 255, 0.18);
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.78rem;
+  line-height: 1.42;
+  color: rgba(230, 240, 255, 0.96);
+}
+
+.iso-scenarios {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.5rem;
+}
+
+.iso-scenario-btn {
+  appearance: none;
+  border: 1px solid rgba(178, 211, 255, 0.34);
+  border-radius: 999px;
+  padding: 0.4rem 0.75rem;
+  background: rgba(11, 24, 42, 0.62);
+  color: #dbe8ff;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  transition: border-color 180ms ease, background 180ms ease, transform 180ms ease;
+}
+
+.iso-scenario-btn:hover {
+  border-color: rgba(79, 212, 196, 0.58);
+  background: rgba(16, 38, 62, 0.78);
+}
+
+.iso-scenario-btn.is-active {
+  border-color: rgba(79, 212, 196, 0.9);
+  background: rgba(31, 81, 90, 0.48);
+  color: #f3fbff;
+  transform: translateY(-1px);
+}
+
+@media (max-width: 780px) {
+  .iso-wrap {
+    grid-template-columns: 1fr;
+    align-items: stretch;
+  }
+
+  .iso-scenarios {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .iso-summary {
+    grid-column: 1 / -1;
+  }
+}
+
+/* ─── Scene container ─────────────────────────────────────── */
+.iso-scene {
+  perspective: 700px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: visible;
+}
+
+/* ─── Rotating stack wrapper ─────────────────────────────── */
+.iso-stack {
+  position: relative;
+  width: 0;
+  height: 0;
+  transform-style: preserve-3d;
+  transform: rotateX(-14deg) rotateY(18deg);
+  animation: iso-float 5s ease-in-out infinite;
+}
+
+@keyframes iso-float {
+  0%,  100% { transform: rotateX(-14deg) rotateY(18deg) translateY(0);     }
+  50%        { transform: rotateX(-14deg) rotateY(18deg) translateY(-8px);  }
+}
+
+/* ─── Per-box slot (stacked in 3D along Y) ───────────────── */
+/*
+  Each slot is offset upward by its index × BOX_H (44px).
+  index 0 = bottom of the physical stack (highest Y / closest to viewer).
+*/
+.iso-box-slot {
+  position: absolute;
+  transform-style: preserve-3d;
+  transform: translateY(calc(var(--idx, 0) * -44px));
+}
+
+/* ─── Drop-animation wrapper (no transform-style so 3D is preserved on child) ── */
+.iso-box-drop {
+  position: relative;
+  width: 0;
+  height: 0;
+  transform-style: preserve-3d;
+}
+
+.iso-box-drop.iso-drop-animate {
+  animation: iso-drop 0.55s cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation-delay: calc(var(--idx, 0) * 0.18s);
+}
+
+@keyframes iso-drop {
+  0%   { transform: translateY(-260px); }
+  60%  { transform: translateY(10px); }
+  80%  { transform: translateY(-5px); }
+  100% { transform: translateY(0); }
+}
+
+/* ─── Individual box (zero-size origin anchor) ─────────────── */
+.iso-box {
+  position: relative;
+  width: 0;
+  height: 0;
+  transform-style: preserve-3d;
+}
+
+/* ─── Shared face styles ─────────────────────────────────── */
+.iso-face {
+  position: absolute;
+}
+
+/*
+  Face transform math (W=150, H=44, D=150):
+    Front : translateZ(D/2)              = translateZ(75)
+    Top   : rotateX(90deg) translateZ(H/2) = rotateX(90deg) translateZ(22)
+    Right : rotateY(90deg) translateZ(W/2) = rotateY(90deg) translateZ(75)
+  CSS applies right-to-left, so translateZ runs first, rotation second.
+*/
+.iso-front {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: translateZ(75px);
+  border-radius: 3px;
+}
+
+.iso-top {
+  transform: rotateX(90deg) translateZ(22px);
+}
+
+.iso-right {
+  transform: rotateY(90deg) translateZ(75px);
+}
+
+/* Left face — back-left edge in isometric view */
+.iso-left {
+  transform: rotateY(-90deg) translateZ(75px);
+}
+
+/* ─── Label ──────────────────────────────────────────────── */
+.iso-label {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  display: inline-block;
+  max-width: 100%;
+  padding: 0.16rem 0.5rem;
+  border: 1px solid var(--box-color, rgba(255, 255, 255, 0.35));
+  border-radius: 999px;
+  background: rgba(6, 13, 24, 0.48);
+  color: #f2f7ff;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.45);
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  text-transform: none;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  pointer-events: none;
+  user-select: none;
+}

@@ -3,6 +3,7 @@ import Layout from '../layouts/Layout.astro';
 import Blurb from '../components/Blurb.astro';
 import AleBot from '../components/AleBot.jsx';
 import './index.css';
+import Stack from '../components/Stack';
 ---
 
 <Layout>
@@ -30,10 +31,120 @@ import './index.css';
           </p>
         </Blurb>
 
-        <Blurb id="toolkit" align="right" title="The stack I trust">
+        <Blurb id="toolkit" align="right" title="The stacks I believe in">
           <p>
-            TypeScript, React, Astro, and pragmatic backend tooling. I optimize for maintainability first, then polish every sharp edge.
+            It's important to choose the right tech for the task at hand, the following
+            are the tech stacks I use for different scenarios, the technologies listed are those
+            I have the most experience with
           </p>
+          <Stack
+            client:load
+            scenarios={[
+              {
+                label: 'Mobile app',
+                summary: 'Flutter gives one codebase for iOS and Android, Dotnet keeps backend logic strong and testable, and Postgres provides reliable relational data as the product grows.',
+                items: [
+                  {
+                    label: 'Flutter/Dart',
+                    color: '#61DAFB',
+                    reason: 'One UI codebase for iOS and Android dramatically reduces delivery time while keeping design and behavior consistent across platforms.',
+                  },
+                  {
+                    label: 'Dotnet',
+                    color: '#7B61FF',
+                    reason: 'Strong typing, mature tooling, and clean layering make APIs easier to scale, test, and maintain under team growth.',
+                  },
+                  {
+                    label: 'Postgres',
+                    color: '#68A063',
+                    reason: 'Reliable relational modeling and robust querying support analytics, reporting, and transactional data without surprises.',
+                  },
+                ],
+              },
+              {
+                label: 'Mobile app (simple)',
+                summary: 'Best for quick product validation: Flutter for fast UI shipping, Firebase for managed auth and realtime capabilities, with Postgres ready when structured reporting matters.',
+                items: [
+                  {
+                    label: 'Flutter/Dart',
+                    color: '#61DAFB',
+                    reason: 'Rapid iteration for MVP interfaces lets product ideas be validated quickly with fewer platform-specific blockers.',
+                  },
+                  {
+                    label: 'Firebase',
+                    color: '#7B61FF',
+                    reason: 'Managed auth, hosting, and realtime services remove infrastructure overhead so teams can focus on product learning.',
+                  },
+                  {
+                    label: 'Postgres',
+                    color: '#68A063',
+                    reason: 'When data shape becomes more structured, Postgres introduces reporting and consistency without rethinking the full architecture.',
+                  },
+                ],
+              },
+              {
+                label: 'SPA',
+                summary: 'React delivers a smooth client experience, Dotnet handles APIs cleanly, and Postgres or MongoDB keeps storage flexible depending on analytics depth and data shape.',
+                items: [
+                  {
+                    label: 'React',
+                    color: '#3178C6',
+                    reason: 'Component-driven architecture speeds up complex UI delivery while keeping behavior predictable and reusable.',
+                  },
+                  {
+                    label: 'Dotnet',
+                    color: '#59C3C3',
+                    reason: 'It provides dependable API performance and clear contracts for frontend teams consuming business logic at scale.',
+                  },
+                  {
+                    label: 'Postgres/MongoDb',
+                    color: '#FF7A18',
+                    reason: 'This pairing gives flexibility: relational rigor where needed and document-style agility when content schemas evolve fast.',
+                  },
+                ],
+              },
+              {
+                label: 'SEO',
+                summary: 'Next.js or Astro maximizes discoverability and performance, Dotnet supports robust backend integrations, and MongoDB works well for content-heavy structures that evolve quickly.',
+                items: [
+                  {
+                    label: 'Next.js/Astro',
+                    color: '#FF5D01',
+                    reason: 'Static and hybrid rendering strategies improve crawlability and page speed, two of the strongest SEO levers.',
+                  },
+                  {
+                    label: 'Dotnet',
+                    color: '#4FD4C4',
+                    reason: 'Stable backend services keep content integrations resilient, which protects reliability and publishing flow.',
+                  },
+                  {
+                    label: 'MongoDb',
+                    color: '#F2B36F',
+                    reason: 'Flexible document modeling helps content teams evolve page structures and metadata without rigid migrations.',
+                  },
+                ],
+              },
+              {
+                label: 'AI Scripting',
+                summary: 'For writing agentic flows, heirarchical or sequential, python is king.',
+                items: [
+                  {
+                    label: 'Python',
+                    color: '#61DAFB',
+                    reason: 'Its ecosystem has first-class support for orchestration frameworks, model SDKs, and data tooling used in agent workflows.',
+                  },
+                  {
+                    label: 'Python',
+                    color: '#7B61FF',
+                  },
+                  {
+                    label: 'Python',
+                    color: '#68A063',
+                  },
+                ],
+              },
+            ]}
+          />
         </Blurb>
 
         <Blurb id="alebot" align="left" title="Got a question?">
