@@ -1,0 +1,68 @@
+---
+import './TestimonialTrain.css';
+
+interface Testimonial {
+  quote: string;
+  author: string;
+  role?: string;
+  color?: string;
+}
+
+const { testimonials = [] } = Astro.props as { testimonials?: Testimonial[] };
+const safeTestimonials = testimonials.length ? testimonials : [
+  {
+    quote: 'Ale turns rough ideas into products people can use with confidence.',
+    author: 'Product Partner',
+    role: 'Startup Founder',
+    color: '#4fd4c4',
+  },
+];
+const segments = [0, 1];
+---
+
+<div class="tt-wrap" role="region" aria-label="Animated testimonial train">
+  <div class="tt-scene">
+    <div class="tt-train">
+      {segments.map((segment) => (
+        <div class="tt-segment" aria-hidden={segment === 1 ? 'true' : 'false'}>
+          <div class="tt-engine" aria-hidden="true">
+            <span class="tt-engine-nose"></span>
+            <span class="tt-chimney"></span>
+            <span class="tt-smoke tt-smoke-a"></span>
+            <span class="tt-smoke tt-smoke-b"></span>
+            <span class="tt-window"></span>
+            <span class="tt-cabin-line"></span>
+            <span class="tt-wheel tt-wheel-left"></span>
+            <span class="tt-wheel tt-wheel-right"></span>
+            <span class="tt-wheel tt-wheel-big"></span>
+            <span class="tt-piston" aria-hidden="true"></span>
+          </div>
+          <span class="tt-link" aria-hidden="true"></span>
+          {safeTestimonials.map((item, idx) => (
+            <>
+              <article class="tt-carriage" style={`--car-accent: ${item.color ?? '#4fd4c4'}`}>
+                <div class="tt-box" aria-hidden="true">
+                  <div class="tt-face tt-front">
+                    <div class="tt-front-content">
+                      <p class="tt-quote">"{item.quote}"</p>
+                      <p class="tt-meta">{item.author}{item.role ? `, ${item.role}` : ''}</p>
+                    </div>
+                  </div>
+                  <div class="tt-face tt-top"></div>
+                  <div class="tt-face tt-right"></div>
+                </div>
+                <span class="tt-underbar" aria-hidden="true"></span>
+                <span class="tt-coupler tt-coupler-front" aria-hidden="true"></span>
+                <span class="tt-coupler tt-coupler-back" aria-hidden="true"></span>
+                <span class="tt-car-wheel tt-car-wheel-left" aria-hidden="true"></span>
+                <span class="tt-car-wheel tt-car-wheel-right" aria-hidden="true"></span>
+              </article>
+              {idx < safeTestimonials.length - 1 && <span class="tt-link" aria-hidden="true"></span>}
+            </>
+          ))}
+        </div>
+      ))}
+    </div>
+  </div>
+  <div class="tt-rail" aria-hidden="true"></div>
+</div>

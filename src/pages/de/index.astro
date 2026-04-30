@@ -1,0 +1,204 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Blurb from '../../components/Blurb.astro';
+import AleBot from '../../components/AleBot.jsx';
+import '../index.css';
+import Stack from '../../components/Stack';
+import TestimonialTrain from '../../components/TestimonialTrain.astro';
+
+const testimonials = [
+  {
+    quote: 'Ale brachte Struktur in eine chaotische Roadmap und half uns, mit Sicherheit zu liefern.',
+    author: 'Giulia M.',
+    role: 'Product Lead',
+    color: '#4fd4c4',
+  },
+  {
+    quote: 'Seine Frontend-Arbeit machte einen komplexen Ablauf fuer unsere Kunden einfach und klar.',
+    author: 'Marco R.',
+    role: 'Design Manager',
+    color: '#f2b36f',
+  },
+  {
+    quote: 'Zuverlaessig, klare Kommunikation und konstant hohe Lieferqualitaet.',
+    author: 'Nadia T.',
+    role: 'Engineering Manager',
+    color: '#7b61ff',
+  },
+];
+---
+
+<Layout>
+  <div id="container">
+    <main>
+      <section id="home">
+        <div class="hero-copy">
+          <h1>Alessandro (Ale)</h1>
+          <h1>Alberga</h1>
+          <p class="hero-intro">
+            Ich baue digitale Erlebnisse, die Geschwindigkeit, Klarheit und Persönlichkeit verbinden. Hier ist ein kurzer Überblick über das, was mir wichtig ist.
+          </p>
+        </div>
+
+        <aside class="hero-portrait-card" aria-label="Professionelles Porträt">
+          <div class="hero-portrait-frame">
+            <img src="/me.PNG" alt="Professionelles Porträt" />
+          </div>
+        </aside>
+      </section>
+      <div id="main-content">
+        <Blurb id="craft" align="left" title="Apps bauen und das Leben lieben">
+          <p>
+            Mir liegt Software am Herzen, die sich klar, freundlich und wirklich nützlich anfühlt. Die besten Produkte sind stille Zuversicht in Bewegung.
+          </p>
+        </Blurb>
+
+        <Blurb id="toolkit" align="right" title="Die Stacks, an die ich glaube">
+          <p>
+            Es ist wichtig, die richtige Technologie für die jeweilige Aufgabe zu wählen. Die folgenden sind die Tech-Stacks, die ich für verschiedene Szenarien verwende — die aufgeführten Technologien sind die, mit denen ich die meiste Erfahrung habe.
+          </p>
+          <Stack
+            client:load
+            scenarios={[
+              {
+                label: 'Mobile App',
+                summary: 'Flutter bietet eine Codebasis für iOS und Android, Dotnet hält die Backend-Logik robust und testbar, und Postgres liefert zuverlässige relationale Daten während das Produkt wächst.',
+                items: [
+                  {
+                    label: 'Flutter/Dart',
+                    color: '#61DAFB',
+                    reason: 'Eine UI-Codebasis für iOS und Android reduziert die Lieferzeit erheblich und hält Design und Verhalten auf beiden Plattformen konsistent.',
+                  },
+                  {
+                    label: 'Dotnet',
+                    color: '#7B61FF',
+                    reason: 'Starke Typisierung, ausgereifte Tools und sauberes Layering machen APIs einfacher zu skalieren, zu testen und zu warten.',
+                  },
+                  {
+                    label: 'Postgres',
+                    color: '#68A063',
+                    reason: 'Zuverlässige relationale Modellierung und robuste Abfragen unterstützen Analytics, Reporting und Transaktionsdaten ohne Überraschungen.',
+                  },
+                ],
+              },
+              {
+                label: 'Mobile App (einfach)',
+                summary: 'Am besten für schnelle Produktvalidierung: Flutter für schnelles UI-Shipping, Firebase für verwaltete Auth und Echtzeit-Funktionen, mit Postgres bereit wenn strukturiertes Reporting wichtig wird.',
+                items: [
+                  {
+                    label: 'Flutter/Dart',
+                    color: '#61DAFB',
+                    reason: 'Schnelle Iteration für MVP-Interfaces ermöglicht es, Produktideen schnell zu validieren mit weniger plattformspezifischen Hindernissen.',
+                  },
+                  {
+                    label: 'Firebase',
+                    color: '#7B61FF',
+                    reason: 'Verwaltete Auth, Hosting und Echtzeit-Services beseitigen Infrastrukturaufwand, damit Teams sich auf das Produktlernen konzentrieren können.',
+                  },
+                  {
+                    label: 'Postgres',
+                    color: '#68A063',
+                    reason: 'Wenn die Datenstruktur definierter wird, bringt Postgres Reporting und Konsistenz ohne die gesamte Architektur zu überdenken.',
+                  },
+                ],
+              },
+              {
+                label: 'SPA',
+                summary: 'React liefert ein flüssiges Client-Erlebnis, Dotnet verwaltet APIs sauber, und Postgres oder MongoDB hält die Speicherung flexibel je nach Analytics-Tiefe und Datenform.',
+                items: [
+                  {
+                    label: 'React',
+                    color: '#3178C6',
+                    reason: 'Komponentengetriebene Architektur beschleunigt die Lieferung komplexer UIs und hält das Verhalten vorhersagbar und wiederverwendbar.',
+                  },
+                  {
+                    label: 'Dotnet',
+                    color: '#59C3C3',
+                    reason: 'Es bietet zuverlässige API-Performance und klare Verträge für Frontend-Teams, die Geschäftslogik in großem Maßstab konsumieren.',
+                  },
+                  {
+                    label: 'Postgres/MongoDb',
+                    color: '#FF7A18',
+                    reason: 'Dieses Paar gibt Flexibilität: relationale Strenge wo nötig und dokumentartige Agilität wenn sich Inhaltsschemata schnell entwickeln.',
+                  },
+                ],
+              },
+              {
+                label: 'SEO',
+                summary: 'Next.js oder Astro maximiert Auffindbarkeit und Performance, Dotnet unterstützt robuste Backend-Integrationen, und MongoDB funktioniert gut für inhaltsschwere Strukturen die sich schnell entwickeln.',
+                items: [
+                  {
+                    label: 'Next.js/Astro',
+                    color: '#FF5D01',
+                    reason: 'Statische und hybride Rendering-Strategien verbessern die Crawlbarkeit und Seitengeschwindigkeit, zwei der stärksten SEO-Hebel.',
+                  },
+                  {
+                    label: 'Dotnet',
+                    color: '#4FD4C4',
+                    reason: 'Stabile Backend-Services halten Content-Integrationen widerstandsfähig, was Zuverlässigkeit und Publishing-Flow schützt.',
+                  },
+                  {
+                    label: 'MongoDb',
+                    color: '#F2B36F',
+                    reason: 'Flexible Dokumentmodellierung hilft Content-Teams, Seitenstrukturen und Metadaten ohne starre Migrationen weiterzuentwickeln.',
+                  },
+                ],
+              },
+              {
+                label: 'KI-Scripting',
+                summary: 'Für das Schreiben agentischer Abläufe, hierarchisch oder sequenziell, ist Python der König.',
+                items: [
+                  {
+                    label: 'Python',
+                    color: '#61DAFB',
+                    reason: 'Sein Ökosystem hat erstklassige Unterstützung für Orchestrierungs-Frameworks, Modell-SDKs und Daten-Tooling für agentische Workflows.',
+                  },
+                  {
+                    label: 'Python',
+                    color: '#7B61FF',
+                  },
+                  {
+                    label: 'Python',
+                    color: '#68A063',
+                  },
+                ],
+              },
+            ]}
+          />
+        </Blurb>
+
+        <Blurb id="alebot" align="left" title="Haben Sie eine Frage?">
+          <p>
+            Möchten Sie mehr über mich erfahren? Fragen Sie AleBot — die KI-Konversation, die ich gebaut habe, um Ihre Neugier zu befriedigen.
+          </p>
+          <AleBot client:load />
+        </Blurb>
+
+        <Blurb id="impact" align="right" title="Hervorgehobene Auswirkungen">
+          <p>
+            Von Geschwindigkeitsgewinnen bis zu klareren User Journeys konzentriere ich mich auf messbare Ergebnisse, die Teams Woche für Woche spüren können.
+          </p>
+        </Blurb>
+
+        <Blurb id="reputation" align="left" title="Vertrauen Sie nicht nur mir">
+          <p>
+            Ich arbeite gerne in kollaborativen Teams, in denen Vertrauen, klare Kommunikation und Eigenverantwortung Schwung erzeugen.
+          </p>
+          <TestimonialTrain testimonials={testimonials} />
+        </Blurb>
+
+        <Blurb id="now" align="right" title="Was ich gerade mache">
+          <p>
+            Verbesserung der Produkt-UX, Straffung der Frontend-Architektur und Bereitstellen von Features, die sich schnell und offensichtlich anfühlen.
+          </p>
+        </Blurb>
+
+        <Blurb id="growth" align="left" title="Was ich verbessern möchte">
+          <p>
+            Design-Systeme, Produktstrategie und durchdachte KI-gestützte Workflows, die sowohl die Entwicklungsgeschwindigkeit als auch die Qualität steigern.
+          </p>
+        </Blurb>
+      </div>
+    </main>
+  </div>
+</Layout>

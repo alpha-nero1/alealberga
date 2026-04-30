@@ -1,0 +1,204 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Blurb from '../../components/Blurb.astro';
+import AleBot from '../../components/AleBot.jsx';
+import '../index.css';
+import Stack from '../../components/Stack';
+import TestimonialTrain from '../../components/TestimonialTrain.astro';
+
+const testimonials = [
+  {
+    quote: 'Ale为混乱的路线图带来了秩序，让我们能够更有信心地交付。',
+    author: 'Giulia M.',
+    role: 'Product Lead',
+    color: '#4fd4c4',
+  },
+  {
+    quote: '他的前端工作让复杂流程对客户来说变得简单直观。',
+    author: 'Marco R.',
+    role: 'Design Manager',
+    color: '#f2b36f',
+  },
+  {
+    quote: '可靠、沟通清晰，并且始终保持高质量交付。',
+    author: 'Nadia T.',
+    role: 'Engineering Manager',
+    color: '#7b61ff',
+  },
+];
+---
+
+<Layout>
+  <div id="container">
+    <main>
+      <section id="home">
+        <div class="hero-copy">
+          <h1>Alessandro (Ale)</h1>
+          <h1>Alberga</h1>
+          <p class="hero-intro">
+            我构建兼顾速度、清晰度与个性的数字体验。这里是我所在乎的事物的快速概览。
+          </p>
+        </div>
+
+        <aside class="hero-portrait-card" aria-label="专业照片">
+          <div class="hero-portrait-frame">
+            <img src="/me.PNG" alt="专业照片" />
+          </div>
+        </aside>
+      </section>
+      <div id="main-content">
+        <Blurb id="craft" align="left" title="构建应用，热爱生活">
+          <p>
+            我在乎的是清晰、友善且真正有用的软件。最好的产品是静默的自信在运动。
+          </p>
+        </Blurb>
+
+        <Blurb id="toolkit" align="right" title="我所信赖的技术栈">
+          <p>
+            为不同任务选择合适的技术至关重要。以下是我在不同场景中使用的技术栈，列出的是我最有经验的技术。
+          </p>
+          <Stack
+            client:load
+            scenarios={[
+              {
+                label: '移动端应用',
+                summary: 'Flutter提供iOS和Android的单一代码库，Dotnet保持后端逻辑强健且可测试，Postgres在产品增长过程中提供可靠的关系型数据。',
+                items: [
+                  {
+                    label: 'Flutter/Dart',
+                    color: '#61DAFB',
+                    reason: '为iOS和Android提供单一UI代码库，在保持设计和行为一致的同时显著减少交付时间。',
+                  },
+                  {
+                    label: 'Dotnet',
+                    color: '#7B61FF',
+                    reason: '强类型、成熟的工具和清晰的分层使API在团队增长时更易于扩展、测试和维护。',
+                  },
+                  {
+                    label: 'Postgres',
+                    color: '#68A063',
+                    reason: '可靠的关系型建模和健壮的查询支持分析、报告和事务数据，不会出现意外。',
+                  },
+                ],
+              },
+              {
+                label: '移动端应用（简单）',
+                summary: '最适合快速产品验证：Flutter快速交付UI，Firebase管理认证和实时能力，当结构化报告变得重要时Postgres随时就绪。',
+                items: [
+                  {
+                    label: 'Flutter/Dart',
+                    color: '#61DAFB',
+                    reason: 'MVP界面的快速迭代让产品想法能够快速验证，减少平台特定的阻碍。',
+                  },
+                  {
+                    label: 'Firebase',
+                    color: '#7B61FF',
+                    reason: '托管认证、托管和实时服务消除了基础设施开销，让团队专注于产品学习。',
+                  },
+                  {
+                    label: 'Postgres',
+                    color: '#68A063',
+                    reason: '当数据结构变得更加清晰时，Postgres引入报告和一致性，无需重新思考整体架构。',
+                  },
+                ],
+              },
+              {
+                label: '单页应用',
+                summary: 'React提供流畅的客户端体验，Dotnet干净地处理API，Postgres或MongoDB根据分析深度和数据形态保持存储灵活。',
+                items: [
+                  {
+                    label: 'React',
+                    color: '#3178C6',
+                    reason: '组件驱动架构加速复杂UI的交付，同时保持行为可预测和可复用。',
+                  },
+                  {
+                    label: 'Dotnet',
+                    color: '#59C3C3',
+                    reason: '为大规模消费业务逻辑的前端团队提供可靠的API性能和清晰的契约。',
+                  },
+                  {
+                    label: 'Postgres/MongoDb',
+                    color: '#FF7A18',
+                    reason: '这种组合提供灵活性：需要时的关系型严谨性，以及内容结构快速演进时的文档式敏捷性。',
+                  },
+                ],
+              },
+              {
+                label: 'SEO优化',
+                summary: 'Next.js或Astro最大化可发现性和性能，Dotnet支持健壮的后端集成，MongoDB适用于快速演进的内容密集型结构。',
+                items: [
+                  {
+                    label: 'Next.js/Astro',
+                    color: '#FF5D01',
+                    reason: '静态和混合渲染策略提升可抓取性和页面速度，这是最强的两个SEO杠杆。',
+                  },
+                  {
+                    label: 'Dotnet',
+                    color: '#4FD4C4',
+                    reason: '稳定的后端服务保持内容集成的弹性，保护可靠性和发布流程。',
+                  },
+                  {
+                    label: 'MongoDb',
+                    color: '#F2B36F',
+                    reason: '灵活的文档建模帮助内容团队在无需严格迁移的情况下演进页面结构和元数据。',
+                  },
+                ],
+              },
+              {
+                label: 'AI脚本',
+                summary: '对于编写层级式或顺序式的智能体流程，Python是王者。',
+                items: [
+                  {
+                    label: 'Python',
+                    color: '#61DAFB',
+                    reason: '其生态系统对智能体工作流中使用的编排框架、模型SDK和数据工具提供一流支持。',
+                  },
+                  {
+                    label: 'Python',
+                    color: '#7B61FF',
+                  },
+                  {
+                    label: 'Python',
+                    color: '#68A063',
+                  },
+                ],
+              },
+            ]}
+          />
+        </Blurb>
+
+        <Blurb id="alebot" align="left" title="有问题吗？">
+          <p>
+            想了解更多关于我的信息？问问AleBot吧 — 这是我构建的对话式AI，专门回答您的疑问。
+          </p>
+          <AleBot client:load />
+        </Blurb>
+
+        <Blurb id="impact" align="right" title="重点成果">
+          <p>
+            从速度提升到更清晰的用户旅程，我专注于团队每周都能感受到的可量化成果。
+          </p>
+        </Blurb>
+
+        <Blurb id="reputation" align="left" title="不要只听我说">
+          <p>
+            我喜欢在信任、清晰沟通和主人翁意识创造动力的协作团队中工作。
+          </p>
+          <TestimonialTrain testimonials={testimonials} />
+        </Blurb>
+
+        <Blurb id="now" align="right" title="我现在在做什么">
+          <p>
+            优化产品UX，精简前端架构，交付感觉快速且直观的功能。
+          </p>
+        </Blurb>
+
+        <Blurb id="growth" align="left" title="我想要提升的方面">
+          <p>
+            设计系统、产品策略，以及能同时提升开发速度和质量的周到的AI辅助工作流。
+          </p>
+        </Blurb>
+      </div>
+    </main>
+  </div>
+</Layout>

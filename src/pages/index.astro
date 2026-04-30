@@ -4,6 +4,28 @@ import Blurb from '../components/Blurb.astro';
 import AleBot from '../components/AleBot.jsx';
 import './index.css';
 import Stack from '../components/Stack';
+import TestimonialTrain from '../components/TestimonialTrain.astro';
+
+const testimonials = [
+  {
+    quote: 'Ale brought calm structure to a chaotic roadmap and helped us ship with confidence.',
+    author: 'Giulia M.',
+    role: 'Product Lead',
+    color: '#4fd4c4',
+  },
+  {
+    quote: 'His frontend work made a complex workflow feel simple for our customers.',
+    author: 'Marco R.',
+    role: 'Design Manager',
+    color: '#f2b36f',
+  },
+  {
+    quote: 'Reliable, clear communication, and consistently high quality delivery.',
+    author: 'Nadia T.',
+    role: 'Engineering Manager',
+    color: '#7b61ff',
+  },
+];
 ---
 
 <Layout>
@@ -164,6 +186,7 @@ import Stack from '../components/Stack';
           <p>
             I enjoy working in collaborative teams where trust, clear communication, and ownership create momentum.
           </p>
+          <TestimonialTrain testimonials={testimonials} />
         </Blurb>
 
         <Blurb id="now" align="right" title="What I'm up to right now">

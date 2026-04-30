@@ -1,0 +1,204 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Blurb from '../../components/Blurb.astro';
+import AleBot from '../../components/AleBot.jsx';
+import '../index.css';
+import Stack from '../../components/Stack';
+import TestimonialTrain from '../../components/TestimonialTrain.astro';
+
+const testimonials = [
+  {
+    quote: 'Aleは混沌としたロードマップに秩序をもたらし、安心してリリースできる体制を作ってくれました。',
+    author: 'Giulia M.',
+    role: 'Product Lead',
+    color: '#4fd4c4',
+  },
+  {
+    quote: '彼のフロントエンド実装で、複雑なフローが顧客にとって直感的になりました。',
+    author: 'Marco R.',
+    role: 'Design Manager',
+    color: '#f2b36f',
+  },
+  {
+    quote: '信頼でき、コミュニケーションが明確で、常に高品質に届けてくれます。',
+    author: 'Nadia T.',
+    role: 'Engineering Manager',
+    color: '#7b61ff',
+  },
+];
+---
+
+<Layout>
+  <div id="container">
+    <main>
+      <section id="home">
+        <div class="hero-copy">
+          <h1>Alessandro (Ale)</h1>
+          <h1>Alberga</h1>
+          <p class="hero-intro">
+            スピード、明確さ、個性を兼ね備えたデジタル体験を構築しています。私が大切にしていることをご紹介します。
+          </p>
+        </div>
+
+        <aside class="hero-portrait-card" aria-label="プロフィール写真">
+          <div class="hero-portrait-frame">
+            <img src="/me.PNG" alt="プロフィール写真" />
+          </div>
+        </aside>
+      </section>
+      <div id="main-content">
+        <Blurb id="craft" align="left" title="アプリを作り、毎日を楽しむ">
+          <p>
+            明確で、親切で、本当に役立つソフトウェアを大切にしています。最高のプロダクトは、静かな自信の動きです。
+          </p>
+        </Blurb>
+
+        <Blurb id="toolkit" align="right" title="信頼するスタック">
+          <p>
+            タスクに応じて適切な技術を選ぶことが重要です。以下は様々なシナリオで使用する技術スタックで、最も経験のある技術をリストしています。
+          </p>
+          <Stack
+            client:load
+            scenarios={[
+              {
+                label: 'モバイルアプリ',
+                summary: 'FlutterはiOSとAndroid向けに単一コードベースを提供し、Dotnetはバックエンドロジックを堅牢でテスト可能に保ち、Postgresはプロダクトの成長に伴い信頼性の高いリレーショナルデータを提供します。',
+                items: [
+                  {
+                    label: 'Flutter/Dart',
+                    color: '#61DAFB',
+                    reason: 'iOSとAndroid向けの単一UIコードベースにより、デザインと動作の一貫性を保ちながら開発時間を大幅に短縮できます。',
+                  },
+                  {
+                    label: 'Dotnet',
+                    color: '#7B61FF',
+                    reason: '強い型付け、成熟したツール、クリーンな階層化により、チームの成長に合わせてAPIのスケール、テスト、保守が容易になります。',
+                  },
+                  {
+                    label: 'Postgres',
+                    color: '#68A063',
+                    reason: '信頼性の高いリレーショナルモデリングと堅牢なクエリが、アナリティクス、レポーティング、トランザクションデータを問題なくサポートします。',
+                  },
+                ],
+              },
+              {
+                label: 'モバイルアプリ（シンプル）',
+                summary: '迅速なプロダクト検証に最適：FlutterでUIを素早くリリース、Firebaseで認証とリアルタイム機能を管理、構造化されたレポーティングが必要になったらPostgresで対応。',
+                items: [
+                  {
+                    label: 'Flutter/Dart',
+                    color: '#61DAFB',
+                    reason: 'MVPインターフェースの高速な反復により、プラットフォーム固有の障壁を少なくしてプロダクトアイデアを素早く検証できます。',
+                  },
+                  {
+                    label: 'Firebase',
+                    color: '#7B61FF',
+                    reason: 'マネージド認証、ホスティング、リアルタイムサービスによりインフラのオーバーヘッドを排除し、チームがプロダクト学習に集中できます。',
+                  },
+                  {
+                    label: 'Postgres',
+                    color: '#68A063',
+                    reason: 'データ構造が明確になった時点で、アーキテクチャ全体を見直すことなくレポーティングと一貫性を導入できます。',
+                  },
+                ],
+              },
+              {
+                label: 'SPA',
+                summary: 'Reactはスムーズなクライアント体験を提供し、DotnetはAPIをクリーンに処理し、PostgresまたはMongoDBはアナリティクスの深さとデータ形状に応じて柔軟なストレージを維持します。',
+                items: [
+                  {
+                    label: 'React',
+                    color: '#3178C6',
+                    reason: 'コンポーネント駆動アーキテクチャにより、複雑なUIの開発を高速化しながら動作を予測可能で再利用可能に保ちます。',
+                  },
+                  {
+                    label: 'Dotnet',
+                    color: '#59C3C3',
+                    reason: '規模でビジネスロジックを消費するフロントエンドチームに、信頼性の高いAPIパフォーマンスと明確な契約を提供します。',
+                  },
+                  {
+                    label: 'Postgres/MongoDb',
+                    color: '#FF7A18',
+                    reason: 'このペアリングは柔軟性を提供します：必要な場所でのリレーショナルな厳密性と、コンテンツスキーマが急速に進化する時のドキュメントスタイルの俊敏性。',
+                  },
+                ],
+              },
+              {
+                label: 'SEO',
+                summary: 'Next.jsまたはAstroは発見可能性とパフォーマンスを最大化し、Dotnetは堅牢なバックエンド統合をサポートし、MongoDBは急速に進化するコンテンツ豊富な構造に適しています。',
+                items: [
+                  {
+                    label: 'Next.js/Astro',
+                    color: '#FF5D01',
+                    reason: '静的およびハイブリッドレンダリング戦略により、クロール可能性とページ速度が向上し、最も強力なSEOレバーの2つとなります。',
+                  },
+                  {
+                    label: 'Dotnet',
+                    color: '#4FD4C4',
+                    reason: '安定したバックエンドサービスがコンテンツ統合の回復力を維持し、信頼性と公開フローを保護します。',
+                  },
+                  {
+                    label: 'MongoDb',
+                    color: '#F2B36F',
+                    reason: '柔軟なドキュメントモデリングにより、コンテンツチームが厳格なマイグレーションなしにページ構造とメタデータを進化させられます。',
+                  },
+                ],
+              },
+              {
+                label: 'AIスクリプティング',
+                summary: '階層的または逐次的なエージェントフローを書く際、Pythonは王者です。',
+                items: [
+                  {
+                    label: 'Python',
+                    color: '#61DAFB',
+                    reason: 'エコシステムは、エージェントワークフローで使用されるオーケストレーションフレームワーク、モデルSDK、データツールに対してファーストクラスのサポートを提供します。',
+                  },
+                  {
+                    label: 'Python',
+                    color: '#7B61FF',
+                  },
+                  {
+                    label: 'Python',
+                    color: '#68A063',
+                  },
+                ],
+              },
+            ]}
+          />
+        </Blurb>
+
+        <Blurb id="alebot" align="left" title="質問はありますか？">
+          <p>
+            私についてもっと知りたいですか？AleBotに聞いてみてください — 皆さんの疑問に答えるために構築した会話型AIです。
+          </p>
+          <AleBot client:load />
+        </Blurb>
+
+        <Blurb id="impact" align="right" title="主な成果">
+          <p>
+            スピードの向上からよりクリーンなユーザージャーニーまで、チームが毎週感じられる測定可能な成果に焦点を当てています。
+          </p>
+        </Blurb>
+
+        <Blurb id="reputation" align="left" title="私の言葉だけを信じないでください">
+          <p>
+            信頼、明確なコミュニケーション、オーナーシップがモメンタムを生む協働チームで働くことを楽しんでいます。
+          </p>
+          <TestimonialTrain testimonials={testimonials} />
+        </Blurb>
+
+        <Blurb id="now" align="right" title="今取り組んでいること">
+          <p>
+            プロダクトUXの改善、フロントエンドアーキテクチャの最適化、そして速くて直感的に感じられる機能のリリース。
+          </p>
+        </Blurb>
+
+        <Blurb id="growth" align="left" title="もっと上手くなりたいこと">
+          <p>
+            デザインシステム、プロダクト戦略、開発スピードと品質の両方を高める思慮深いAI支援ワークフロー。
+          </p>
+        </Blurb>
+      </div>
+    </main>
+  </div>
+</Layout>
