@@ -1,11 +1,73 @@
 ---
-import Welcome from '../components/Welcome.astro';
 import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import Blurb from '../components/Blurb.astro';
+import AleBot from '../components/AleBot.jsx';
+import './index.css';
 ---
 
 <Layout>
-	<Welcome />
+  <div id="container">
+    <main>
+      <section id="home">
+        <div class="hero-copy">
+          <h1>Alessandro (Ale)</h1>
+          <h1>Alberga</h1>
+          <p class="hero-intro">
+            I build digital experiences that balance speed, clarity, and personality. Here is a quick snapshot of what I care about.
+          </p>
+        </div>
+
+        <aside class="hero-portrait-card" aria-label="Professional portrait">
+          <div class="hero-portrait-frame">
+            <img src="/me.PNG" alt="Professional portrait placeholder" />
+          </div>
+        </aside>
+      </section>
+      <div id="main-content">
+        <Blurb id="craft" align="left" title="Building apps and loving life doing it">
+          <p>
+            I care about software that feels clear, kind, and genuinely useful. The best products are quiet confidence in motion.
+          </p>
+        </Blurb>
+
+        <Blurb id="toolkit" align="right" title="The stack I trust">
+          <p>
+            TypeScript, React, Astro, and pragmatic backend tooling. I optimize for maintainability first, then polish every sharp edge.
+          </p>
+        </Blurb>
+
+        <Blurb id="alebot" align="left" title="Got a question?">
+          <p>
+            Want to find out more about me? Ask AleBot — the conversational AI I built to answer your curiosities.
+          </p>
+          <AleBot client:load />
+        </Blurb>
+
+        <Blurb id="impact" align="right" title="Highlighted impacts">
+          <p>
+            From velocity wins to cleaner user journeys, I focus on measurable outcomes that teams can feel week after week.
+          </p>
+        </Blurb>
+
+        <Blurb id="reputation" align="left" title="Don't just take my word for it">
+          <p>
+            I enjoy working in collaborative teams where trust, clear communication, and ownership create momentum.
+          </p>
+        </Blurb>
+
+        <Blurb id="now" align="right" title="What I'm up to right now">
+          <p>
+            Refining product UX, tightening frontend architecture, and shipping features that feel fast and obvious.
+          </p>
+        </Blurb>
+
+        <Blurb id="growth" align="left" title="What I'm keen to get better at">
+          <p>
+            Design systems, product strategy, and thoughtful AI-assisted workflows that amplify both dev speed and quality.
+          </p>
+        </Blurb>
+      </div>
+    </main>
+  </div>
 </Layout>
+
