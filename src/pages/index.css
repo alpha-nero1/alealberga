@@ -440,6 +440,7 @@ main {
 
 @media (max-width: 780px) {
   main {
+    width: min(980px, 96vw);
     padding-top: 3.5rem;
   }
 
