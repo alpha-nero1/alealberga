@@ -1,0 +1,194 @@
+---
+import Blurb from '../../Blurb.astro';
+import './AcheivementsSection.css';
+
+const achievements = [
+  {
+    title: 'FluentSRS | An app for language enthusiasts',
+    description: 'A short placeholder description of this achievement. Swap this out for the real story once you have it.',
+    year: '2026',
+    accent: '#4fd4c4',
+  },
+  {
+    title: 'Complete Dart/Flutter course | Udemy',
+    description: 'A short placeholder description of this achievement. Swap this out for the real story once you have it.',
+    year: '2026',
+    accent: '#4fd4c4',
+  },
+  {
+    title: 'AI course | Udemy',
+    description: 'A short placeholder description of this achievement. Swap this out for the real story once you have it.',
+    year: '2025',
+    accent: '#4fd4c4',
+  },
+  {
+    title: 'Associate AWS Solutions Architect | AWS',
+    description: 'A short placeholder description of this achievement. Swap this out for the real story once you have it.',
+    year: '2024',
+    accent: '#f2b36f',
+  },
+  {
+    title: 'Machine Learning Masterclass | Udemy',
+    description: 'A short placeholder description of this achievement. Swap this out for the real story once you have it.',
+    year: '2023',
+    accent: '#7b61ff',
+  },
+  {
+    title: 'All 189 questions of the Cracking the Coding Interview',
+    description: 'A short placeholder description of this achievement. Swap this out for the real story once you have it.',
+    year: '2021',
+    accent: '#59c3c3',
+  },
+  {
+    title: 'Graduated at UTS',
+    description: 'A short placeholder description of this achievement. Swap this out for the real story once you have it.',
+    year: '2018',
+    accent: '#59c3c3',
+  },
+];
+---
+
+<Blurb id="reputation" align="left" title="Cool things I have done over the years">
+  <p>
+    Over the years I have acheived several feats that I am proud of
+  </p>
+
+  <div class="achievement-carousel">
+    <button class="achievement-nav achievement-nav--prev" type="button" aria-label="Previous achievement" data-dir="-1">
+      <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M15 6l-6 6 6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+      </svg>
+    </button>
+
+    <ul class="achievement-track">
+      {achievements.map((item) => (
+        <li class="achievement-card">
+          <div class="achievement-card-image" style={`background: linear-gradient(150deg, ${item.accent}33, ${item.accent}0d);`}>
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" style={`color:${item.accent}`}>
+              <path
+                d="M8 21h8M12 17v4M7 4h10v4a5 5 0 0 1-10 0V4ZM7 5H4v1a3 3 0 0 0 3 3M17 5h3v1a3 3 0 0 1-3 3"
+                stroke="currentColor"
+                stroke-width="1.6"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </div>
+          <div class="achievement-card-body">
+            <h3>{item.title}</h3>
+            <p>{item.description}</p>
+          </div>
+          <span class="achievement-chip">{item.year}</span>
+        </li>
+      ))}
+    </ul>
+
+    <button class="achievement-nav achievement-nav--next" type="button" aria-label="Next achievement" data-dir="1">
+      <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+      </svg>
+    </button>
+  </div>
+</Blurb>
+
+<script>
+  document.querySelectorAll<HTMLElement>('.achievement-carousel').forEach((carousel) => {
+    const trackEl = carousel.querySelector<HTMLElement>('.achievement-track');
+    if (!trackEl) return;
+    const track = trackEl;
+
+    function cardStep() {
+      const card = track.querySelector('.achievement-card');
+      return card ? card.getBoundingClientRect().width + 22 : track.clientWidth;
+    }
+
+    function scrollByCards(dir: number) {
+      track.scrollBy({ left: dir * cardStep(), behavior: 'smooth' });
+    }
+
+    carousel.querySelectorAll('.achievement-nav').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        scrollByCards(Number(btn.getAttribute('data-dir') ?? '1'));
+      });
+    });
+
+    let isDragging = false;
+    let dragMoved = false;
+    let dragStartX = 0;
+    let dragStartScroll = 0;
+
+    track.addEventListener('pointerdown', (e) => {
+      if (e.pointerType !== 'mouse') return;
+      isDragging = true;
+      dragMoved = false;
+      dragStartX = e.clientX;
+      dragStartScroll = track.scrollLeft;
+      track.setPointerCapture(e.pointerId);
+      track.classList.add('is-dragging');
+    });
+
+    track.addEventListener('pointermove', (e) => {
+      if (!isDragging) return;
+      const delta = e.clientX - dragStartX;
+      if (Math.abs(delta) > 4) dragMoved = true;
+      track.scrollLeft = dragStartScroll - delta;
+    });
+
+    function endDrag() {
+      if (!isDragging) return;
+      isDragging = false;
+      track.classList.remove('is-dragging');
+
+      const delta = track.scrollLeft - dragStartScroll;
+      const threshold = cardStep() * 0.2;
+      let target = dragStartScroll;
+
+      if (Math.abs(delta) > threshold) {
+        target = dragStartScroll + (delta > 0 ? cardStep() : -cardStep());
+      }
+
+      target = Math.max(0, Math.min(target, track.scrollWidth - track.clientWidth));
+      track.scrollTo({ left: target, behavior: 'smooth' });
+    }
+
+    track.addEventListener('pointerup', endDrag);
+    track.addEventListener('pointercancel', endDrag);
+
+    track.addEventListener('click', (e) => {
+      if (dragMoved) {
+        e.preventDefault();
+        e.stopPropagation();
+      }
+    }, true);
+
+    let idleTimer: ReturnType<typeof setTimeout> | null = null;
+
+    function autoAdvance() {
+      const atEnd = track.scrollLeft + track.clientWidth >= track.scrollWidth - 4;
+      if (atEnd) {
+        track.scrollTo({ left: 0, behavior: 'smooth' });
+      } else {
+        scrollByCards(1);
+      }
+      scheduleAutoScroll();
+    }
+
+    function scheduleAutoScroll() {
+      if (idleTimer) clearTimeout(idleTimer);
+      idleTimer = setTimeout(autoAdvance, 5000);
+    }
+
+    function pauseAutoScroll() {
+      if (idleTimer) clearTimeout(idleTimer);
+      idleTimer = null;
+    }
+
+    ['pointerdown', 'touchstart', 'wheel', 'keydown'].forEach((evt) => {
+      carousel.addEventListener(evt, scheduleAutoScroll, { passive: true });
+    });
+    carousel.addEventListener('pointerenter', pauseAutoScroll);
+    carousel.addEventListener('pointerleave', scheduleAutoScroll);
+
+    scheduleAutoScroll();
+  });
+</script>

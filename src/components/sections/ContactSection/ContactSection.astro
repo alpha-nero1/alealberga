@@ -1,0 +1,80 @@
+---
+import Blurb from '../../Blurb.astro';
+import './ContactSection.css';
+---
+
+<Blurb id="contact" align="right" title="Get in touch">
+  <p>
+    Got a project, a role, or just want to say hi? Send a message and I'll get back to you.
+  </p>
+
+  <form class="contact-form" novalidate>
+    <div class="contact-field">
+      <label for="contact-name">Name</label>
+      <input id="contact-name" name="name" type="text" autocomplete="name" required />
+    </div>
+
+    <div class="contact-field">
+      <label for="contact-email">Email</label>
+      <input id="contact-email" name="email" type="email" autocomplete="email" required />
+    </div>
+
+    <div class="contact-field">
+      <label for="contact-message">Message</label>
+      <textarea id="contact-message" name="message" rows="4" required></textarea>
+    </div>
+
+    <div class="contact-actions">
+      <button class="contact-submit" type="submit">Send message</button>
+      <span class="contact-status" role="status" aria-live="polite"></span>
+    </div>
+  </form>
+</Blurb>
+
+<script>
+  document.querySelectorAll<HTMLFormElement>('.contact-form').forEach((form) => {
+    const submitBtn = form.querySelector<HTMLButtonElement>('.contact-submit');
+    const status = form.querySelector<HTMLElement>('.contact-status');
+    if (!submitBtn || !status) return;
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const formData = new FormData(form);
+      const payload = {
+        name: String(formData.get('name') ?? '').trim(),
+        email: String(formData.get('email') ?? '').trim(),
+        message: String(formData.get('message') ?? '').trim(),
+      };
+
+      if (!payload.name || !payload.email || !payload.message) {
+        status.textContent = 'Please fill in every field.';
+        status.dataset.state = 'error';
+        return;
+      }
+
+      submitBtn.disabled = true;
+      status.textContent = 'Sending…';
+      status.dataset.state = 'pending';
+
+      try {
+        const res = await fetch('/api/contact', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload),
+        });
+
+        if (!res.ok) throw new Error('Request failed');
+
+        status.textContent = 'Message sent, thanks! I\'ll get back to you soon.';
+        status.dataset.state = 'success';
+        form.reset();
+      } catch {
+        status.textContent = 'Something went wrong. Try again, or email me directly.';
+        status.dataset.state = 'error';
+      } finally {
+        submitBtn.disabled = false;
+      }
+    });
+  });
+</script>

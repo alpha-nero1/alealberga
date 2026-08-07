@@ -23,7 +23,7 @@
 }
 
 main {
-  width: min(980px, 92vw);
+  width: min(980px, 96vw);
   margin: 0 auto;
   padding: 5.2rem 0 4.5rem;
   display: flex;
@@ -253,10 +253,196 @@ main {
   }
 }
 
+/* ── AleBot floating widget ───────────────────────────────────── */
+
+.alebot-widget {
+  position: fixed;
+  right: clamp(1rem, 3vw, 2rem);
+  bottom: clamp(1rem, 3vw, 2rem);
+  z-index: 200;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.75rem;
+}
+
+.alebot-fab {
+  position: relative;
+  overflow: hidden;
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  border: 1px solid rgba(79, 212, 196, 0.4);
+  background: linear-gradient(135deg, #143b52, #173557);
+  color: #a8e8e2;
+  cursor: pointer;
+  box-shadow: 0 18px 36px rgba(2, 7, 20, 0.55);
+  transition: transform 160ms ease, box-shadow 160ms ease, color 160ms ease, border-radius 220ms ease, padding 220ms ease;
+}
+
+.alebot-fab--cta {
+  padding: 0.8rem 1.2rem 0.8rem 0.9rem;
+  border-radius: 999px;
+  animation: fab-cta-in 420ms cubic-bezier(0.2, 0.8, 0.2, 1) forwards, fab-cta-bounce 2.8s ease-in-out 1.2s infinite;
+}
+
+.alebot-fab--open {
+  width: 3.4rem;
+  height: 3.4rem;
+  padding: 0;
+  border-radius: 50%;
+  justify-content: center;
+}
+
+.alebot-fab-icon {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.alebot-fab-icon svg {
+  width: 1.45rem;
+  height: 1.45rem;
+}
+
+.alebot-fab-label {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--ink);
+  white-space: nowrap;
+}
+
+.alebot-fab-sheen {
+  position: absolute;
+  top: 0;
+  left: -60%;
+  width: 40%;
+  height: 100%;
+  background: linear-gradient(115deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+  transform: skewX(-20deg);
+  animation: fab-sheen 3.4s ease-in-out 1.4s infinite;
+  pointer-events: none;
+}
+
+.alebot-panel {
+  width: min(360px, calc(100vw - 2rem));
+  max-height: min(520px, calc(100vh - 8rem));
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  border-radius: 20px;
+  border: 1px solid var(--edge);
+  background: linear-gradient(155deg, #122946 0%, #173557 62%, #18394d 100%);
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(8px);
+  animation: stack-in 220ms cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+
+.alebot-panel-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 0.6rem;
+  margin-bottom: 0.4rem;
+  border-bottom: 1px solid var(--edge);
+}
+
+.alebot-panel-title {
+  font-weight: 800;
+  font-size: 0.95rem;
+  color: var(--ink);
+}
+
+.alebot-panel-close {
+  width: 1.9rem;
+  height: 1.9rem;
+  border: none;
+  border-radius: 50%;
+  background: transparent;
+  color: var(--ink-soft);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 160ms ease, color 160ms ease;
+}
+
+.alebot-panel-close svg {
+  width: 1rem;
+  height: 1rem;
+}
+
+.alebot-panel-close:hover {
+  background: rgba(79, 212, 196, 0.14);
+  color: #f6fcff;
+}
+
+.alebot-panel .alebot-thread {
+  max-height: 320px;
+}
+
+@keyframes fab-cta-in {
+  from {
+    opacity: 0;
+    transform: translateX(8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fab-cta-bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-3px);
+  }
+}
+
+@keyframes fab-sheen {
+  0% {
+    left: -60%;
+  }
+
+  32%, 100% {
+    left: 130%;
+  }
+}
+
+@media (max-width: 640px) {
+  .alebot-fab-label {
+    display: none;
+  }
+
+  .alebot-fab--cta {
+    padding: 0.9rem;
+    border-radius: 50%;
+  }
+}
+
+@media (max-width: 480px) {
+  .alebot-widget {
+    right: 1rem;
+    bottom: 1rem;
+    left: 1rem;
+    align-items: flex-end;
+  }
+
+  .alebot-panel {
+    width: 100%;
+  }
+}
+
 /* ── AleBot chat ───────────────────────────────────────────── */
 
 .alebot {
-  margin-top: 1rem;
+  margin-top: 0;
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
@@ -440,7 +626,7 @@ main {
 
 @media (max-width: 780px) {
   main {
-    width: min(980px, 96vw);
+    width: min(980px, 98vw);
     padding-top: 3.5rem;
   }
 

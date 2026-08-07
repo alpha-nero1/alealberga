@@ -1,0 +1,31 @@
+---
+import Blurb from '../../Blurb.astro';
+import './BlogsSection.css';
+
+const previews = [
+  {
+    title: 'Post title coming soon',
+    excerpt: 'A first look at how I approach shipping Flutter apps without losing frontend polish.',
+  },
+  {
+    title: 'Post title coming soon',
+    excerpt: 'Notes on keeping a Dotnet API clean while a product is still finding its shape.',
+  },
+];
+---
+
+<Blurb id="blogs" align="left" title="From the blog">
+  <p>
+    I write up lessons from shipping products, mostly around Flutter, frontend architecture, and AI-assisted
+    workflows. New posts are on the way.
+  </p>
+  <div class="blog-preview-list">
+    {previews.map((post) => (
+      <div class="blog-preview-card">
+        <h3>{post.title}</h3>
+        <p>{post.excerpt}</p>
+      </div>
+    ))}
+  </div>
+  <a class="blog-preview-link" href="/blogs">Visit the blog →</a>
+</Blurb>

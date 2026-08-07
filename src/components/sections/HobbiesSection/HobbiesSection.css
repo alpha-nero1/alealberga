@@ -1,0 +1,45 @@
+.hobby-list {
+  margin-top: 1rem;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.9rem;
+}
+
+.hobby-item {
+  padding: 0.85rem 1rem;
+  border: 1px solid var(--edge);
+  border-radius: 14px;
+  background: rgba(10, 26, 45, 0.4);
+}
+
+.hobby-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0.5rem;
+}
+
+.hobby-icon svg {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.hobby-item h3 {
+  margin: 0;
+  font-size: 1.02rem;
+  font-weight: 800;
+  color: var(--accent);
+}
+
+.hobby-item p {
+  margin: 0.4rem 0 0;
+  color: var(--ink-soft);
+  font-size: 0.87rem;
+  line-height: 1.55;
+}
+
+@media (max-width: 640px) {
+  .hobby-list {
+    grid-template-columns: 1fr;
+  }
+}

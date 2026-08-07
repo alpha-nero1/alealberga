@@ -1,0 +1,129 @@
+.timeline {
+  margin-top: 1rem;
+}
+
+.timeline-track {
+  display: flex;
+  align-items: stretch;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.timeline-item {
+  display: flex;
+  flex-direction: column;
+  flex-basis: 0;
+  min-width: 300px;
+}
+
+.timeline-card {
+  flex: 1;
+  margin-right: 1rem;
+  padding: 0.9rem 1rem;
+  border: 1px solid var(--edge);
+  border-radius: 14px;
+  background: rgba(10, 26, 45, 0.4);
+}
+
+.timeline-card-head {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.timeline-logo {
+  flex: 0 0 auto;
+  width: 2.3rem;
+  height: 2.3rem;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8rem;
+  font-weight: 800;
+  color: #ffffff;
+}
+
+.timeline-card-head h3 {
+  margin: 0;
+  font-size: 0.95rem;
+  color: var(--ink);
+}
+
+.timeline-role {
+  margin: 0.1rem 0 0;
+  font-size: 0.76rem;
+  font-weight: 700;
+  color: var(--accent);
+}
+
+.timeline-description {
+  margin: 0.6rem 0 0;
+  color: var(--ink-soft);
+  font-size: 0.83rem;
+  line-height: 1.5;
+}
+
+.timeline-marker-row {
+  position: relative;
+  height: 22px;
+  margin-right: 1rem;
+}
+
+.timeline-marker-row::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  height: 2px;
+  background: var(--edge);
+  transform: translateY(-50%);
+}
+
+.timeline-marker {
+  position: relative;
+  z-index: 1;
+  display: block;
+  width: 11px;
+  height: 11px;
+  margin: 0 auto;
+  border-radius: 50%;
+  border: 2px solid var(--surface);
+}
+
+.timeline-range {
+  margin-right: 1rem;
+  display: block;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--ink-soft);
+  text-align: center;
+}
+
+@media (max-width: 780px) {
+  .timeline-track {
+    flex-direction: column;
+  }
+
+  .timeline-item {
+    flex-basis: auto !important;
+    min-width: 0;
+  }
+
+  .timeline-marker-row {
+    display: none;
+  }
+
+  .timeline-card {
+    margin-right: 0;
+    margin-bottom: 0.4rem;
+  }
+
+  .timeline-range {
+    margin-right: 0;
+    margin-bottom: 0.9rem;
+    text-align: left;
+  }
+}

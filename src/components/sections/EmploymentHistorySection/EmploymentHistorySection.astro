@@ -1,0 +1,73 @@
+---
+import Blurb from '../../Blurb.astro';
+import './EmploymentHistorySection.css';
+
+const CURRENT_YEAR = 2026;
+
+const jobs = [
+  {
+    company: 'Company One',
+    role: 'Software Engineer',
+    description: 'Placeholder description of the role, responsibilities and impact at this company. Swap this out for the real story once you have it.',
+    start: 2016,
+    end: 2018,
+    accent: '#4fd4c4',
+  },
+  {
+    company: 'Company Two',
+    role: 'Senior Software Engineer',
+    description: 'Placeholder description of the role, responsibilities and impact at this company. Swap this out for the real story once you have it.',
+    start: 2018,
+    end: 2021,
+    accent: '#f2b36f',
+  },
+  {
+    company: 'Company Three',
+    role: 'Lead Frontend Engineer',
+    description: 'Placeholder description of the role, responsibilities and impact at this company. Swap this out for the real story once you have it.',
+    start: 2021,
+    end: 2024,
+    accent: '#7b61ff',
+  },
+  {
+    company: 'Company Four',
+    role: 'Senior Software Engineer',
+    description: 'Placeholder description of the role, responsibilities and impact at this company. Swap this out for the real story once you have it.',
+    start: 2024,
+    end: CURRENT_YEAR,
+    current: true,
+    accent: '#59c3c3',
+  },
+];
+---
+
+<Blurb id="now" align="right" title="My employment history">
+  <p>
+    Refining product UX, tightening frontend architecture, and shipping features that feel fast and obvious.
+  </p>
+
+  <div class="timeline">
+    <ol class="timeline-track">
+      {[...jobs].reverse().map((job) => (
+        <li class="timeline-item" style={`flex-grow:${Math.max(job.end - job.start, 1)}`}>
+          <div class="timeline-card">
+            <div class="timeline-card-head">
+              <span class="timeline-logo" style={`background:${job.accent}`}>
+                {job.company.split(' ').map((w) => w[0]).join('').slice(0, 2)}
+              </span>
+              <div>
+                <h3>{job.company}</h3>
+                <p class="timeline-role">{job.role}</p>
+              </div>
+            </div>
+            <p class="timeline-description">{job.description}</p>
+          </div>
+          <div class="timeline-marker-row">
+            <span class="timeline-marker" style={`background:${job.accent}`}></span>
+          </div>
+          <span class="timeline-range">{job.start} – {job.current ? 'Present' : job.end}</span>
+        </li>
+      ))}
+    </ol>
+  </div>
+</Blurb>

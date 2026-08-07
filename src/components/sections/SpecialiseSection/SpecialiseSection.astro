@@ -1,0 +1,52 @@
+---
+import Blurb from '../../Blurb.astro';
+import './SpecialiseSection.css';
+
+const languages = [
+  {
+    name: 'JavaScript/TypeScript',
+    reason: 'An absolute weapon in the browser, JS is a critical tool to have in one\'s toolkit, from vanilla JS for simple but elegant solutions to react.js for sophisticated UI, JavaScript has the power to knock the user\'s socks off!',
+    logos: [
+      { label: 'JS', bg: '#F7DF1E', fg: '#1a1a1a' },
+      { label: 'TS', bg: '#3178C6', fg: '#ffffff' },
+    ],
+  },
+  {
+    name: 'Python',
+    reason: 'From serverless firebase/AWS functions, basic API test scripts to working with data and AI, python has proven itself time and time again to be a robust and flexible language allowing for untapped levels of creativity. It is one of my dearest.',
+    logos: [{ label: 'Py', bg: '#4B8B3B', fg: '#ffffff' }],
+  },
+  {
+    name: 'CSharp',
+    reason: 'CSharp and by extension dotnet, is an heavy hitter in writing backend solutions, this strongly typed but succinct language brings sophisticated backend solutions to life, and who doesn\'t love that!',
+    logos: [{ label: 'C#', bg: '#684DBA', fg: '#ffffff' }, { label: 'Dotnet', bg: '#684DBA', fg: '#ffffff' }],
+  },
+  {
+    name: 'Dart',
+    reason: 'A relative newcomer to my list, dart (and flutter) has made mobile app development the easiest it has ever been, it\'s purpose built and just makes sense, when starting a mobile app, I would not choose anything else.',
+    logos: [{ label: 'Dart', bg: '#0175C2', fg: '#ffffff' }, { label: 'Flutter', bg: '#0175C2', fg: '#ffffff' }],
+  },
+];
+---
+
+<Blurb id="craft" align="left" title="What do I specialise in?">
+  <p>
+    I consider 4 languages to be my specialty, these 4 are very close to my heart as they have
+    served me well over the years.
+  </p>
+  <div class="language-list">
+    {languages.map((lang) => (
+      <div class="language-item">
+        <h3>{lang.name}</h3>
+        <p>{lang.reason}</p>
+        <div class="language-logos">
+          {lang.logos.map((logo) => (
+            <span class="language-logo" style={`background:${logo.bg}; color:${logo.fg};`}>
+              {logo.label}
+            </span>
+          ))}
+        </div>
+      </div>
+    ))}
+  </div>
+</Blurb>

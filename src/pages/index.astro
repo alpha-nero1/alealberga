@@ -1,33 +1,14 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Blurb from '../components/Blurb.astro';
-import AleBot from '../components/AleBot.jsx';
 import './index.css';
-import Stack from '../components/Stack';
-import TestimonialTrain from '../components/TestimonialTrain.astro';
-
-const testimonials = [
-  {
-    quote: 'Ale brought calm structure to a chaotic roadmap and helped us ship with confidence.',
-    author: 'Giulia M.',
-    role: 'Product Lead',
-    color: '#4fd4c4',
-  },
-  {
-    quote: 'His frontend work made a complex workflow feel simple for our customers.',
-    author: 'Marco R.',
-    role: 'Design Manager',
-    color: '#f2b36f',
-  },
-  {
-    quote: 'Reliable, clear communication, and consistently high quality delivery.',
-    author: 'Nadia T.',
-    role: 'Engineering Manager',
-    color: '#7b61ff',
-  },
-];
-
-const flutterColour = '#61DAFB'
+import ToolkitSection from '../components/sections/ToolkitSection/ToolkitSection.astro';
+import SpecialiseSection from '../components/sections/SpecialiseSection/SpecialiseSection.astro';
+import AcheivementsSection from '../components/sections/AcheivementsSection/AcheivementsSection.astro';
+import EmploymentHistorySection from '../components/sections/EmploymentHistorySection/EmploymentHistorySection.astro';
+import HobbiesSection from '../components/sections/HobbiesSection/HobbiesSection.astro';
+import ContactSection from '../components/sections/ContactSection/ContactSection.astro';
+import BlogsSection from '../components/sections/BlogsSection/BlogsSection.astro';
+import AleBotSection from '../components/sections/AleBotSection/AleBotSection.astro';
 
 ---
 
@@ -39,7 +20,16 @@ const flutterColour = '#61DAFB'
           <h1>Alessandro (Ale)</h1>
           <h1>Alberga</h1>
           <p class="hero-intro">
-            I build digital experiences that balance speed, clarity, and personality. Here is a quick snapshot of what I care about.
+            Well hello hello, my name is Ale. I am a Senior Software Engineer based in Sydney, Australia specialising in front end
+            application development with a focus on flutter used for iOS and Android apps.
+          </p>
+          <p class="hero-intro">
+            However, I am no stranger to enterprise systems having worked in full stack and hollistic roles
+            for most of my career.
+          </p>
+          <p class="hero-intro">
+            One thing for certain is this, I love to code and deliver products that make a difference. This is
+            how I am able to hold a Job and never work a day in my life!
           </p>
         </div>
 
@@ -50,156 +40,23 @@ const flutterColour = '#61DAFB'
         </aside>
       </section>
       <div id="main-content">
-        <Blurb id="craft" align="left" title="Building apps and loving life doing it">
-          <p>
-            I care about software that feels clear, kind, and genuinely useful. The best products are quiet confidence in motion.
-          </p>
-        </Blurb>
-
-        <Blurb id="toolkit" align="right" title="The stacks I believe in">
-          <p>
-            It's important to choose the right tech for the task at hand, the following
-            are the tech stacks I use for different scenarios, the technologies listed are those
-            I have the most experience with
-          </p>
-          <Stack
-            client:load
-            scenarios={[
-              {
-                label: 'Mobile app',
-                summary: 'Flutter gives one codebase for iOS and Android, Dotnet keeps backend logic strong and testable, and Postgres provides reliable relational data as the product grows.',
-                items: [
-                  {
-                    label: 'Flutter/Dart',
-                    color: flutterColour,
-                    reason: 'Flutter is a must have for mobile development, this is the only framework that appears to acheive the full FPS of whatever device it runs on, the fact that flutter compiles to machine code for iOS and android means that it is irreplaceable for me when it comes to creating super responsive mobile UI',
-                  },
-                  {
-                    label: 'Dotnet',
-                    color: '#7B61FF',
-                    reason: 'Strong typing, clean layering and high performance code that is not super verbose are just some of the things I love about dotnet. This is the backend tech that I have the most experience with.',
-                  },
-                  {
-                    label: 'Postgres',
-                    color: '#68A063',
-                    reason: `Postgres has become the industry standard in recent years, I have always used it and am very farmiliar with the syntax, it's robust data integrity, performance and extensibility make it a very difficuly choice to ignore if you need a relationalDB`,
-                  },
-                ],
-              },
-              {
-                label: 'Mobile app (simple)',
-                summary: `This stack is unrivaled for building mobile apps that don't require a complicated backend architecture, allowing yourself to focus soley on the mobile app experience, this is generally my go to for personal mobile app projects`,
-                items: [
-                  {
-                    label: 'Flutter/Dart',
-                    color: flutterColour,
-                    reason: 'Flutter is a must have for mobile development, this is the only framework that appears to acheive the full FPS of whatever device it runs on, the fact that flutter compiles to machine code for iOS and android means that it is irreplaceable for me when it comes to creating super responsive mobile UI',
-                  },
-                  {
-                    label: 'Firebase',
-                    color: '#7B61FF',
-                    reason: 'Honestly ask yourself, does my app need a complicated backend? if not I would highly suggest firebase, you get a simple CRUD backend out of the gate that is fast and has a very generous free tier',
-                  }
-                ],
-              },
-              {
-                label: 'SPA',
-                summary: 'React delivers a smooth client experience, Dotnet handles APIs cleanly, and Postgres or MongoDB keeps storage flexible depending on analytics depth and data shape.',
-                items: [
-                  {
-                    label: 'React',
-                    color: '#3178C6',
-                    reason: 'At heart I am very much a React fanboy when it comes to web develoment, the organisation and reusability that components provide, as well as that smooth JSX/TSX syntax is just a joy to work with. For web development React/Preact will always be my go to',
-                  },
-                  {
-                    label: 'Dotnet',
-                    color: '#59C3C3',
-                    reason: 'Strong typing, clean layering and high performance code that is not super verbose are just some of the things I love about dotnet. This is the backend tech that I have the most experience with.',
-                  },
-                  {
-                    label: 'Postgres/MongoDb',
-                    color: '#FF7A18',
-                    reason: `Postgres has become the industry standard in recent years, I have always used it and am very farmiliar with the syntax, it's robust data integrity, performance and extensibility make it a very difficuly choice to ignore if you need a relationalDB`,
-                  },
-                ],
-              },
-              {
-                label: 'SEO',
-                summary: 'Next.js or Astro maximizes discoverability and performance, Dotnet supports robust backend integrations, and MongoDB works well for content-heavy structures that evolve quickly.',
-                items: [
-                  {
-                    label: 'Next.js/Astro',
-                    color: '#FF5D01',
-                    reason: 'Static and hybrid rendering strategies improve crawlability and page speed, two of the strongest SEO levers.',
-                  },
-                  {
-                    label: 'Dotnet',
-                    color: '#4FD4C4',
-                    reason: 'Strong typing, clean layering and high performance code that is not super verbose are just some of the things I love about dotnet. This is the backend tech that I have the most experience with.',
-                  },
-                  {
-                    label: 'MongoDb',
-                    color: '#F2B36F',
-                    reason: 'Flexible document modeling helps content teams evolve page structures and metadata without rigid migrations.',
-                  },
-                ],
-              },
-              {
-                label: 'AI Scripting',
-                summary: 'For writing agentic flows, heirarchical or sequential, python is king.',
-                items: [
-                  {
-                    label: 'Python',
-                    color: '#61DAFB',
-                    reason: 'Its ecosystem has first-class support for orchestration frameworks, model SDKs, and data tooling used in agent workflows.',
-                  },
-                  {
-                    label: 'Python',
-                    color: '#7B61FF',
-                  },
-                  {
-                    label: 'Python',
-                    color: '#68A063',
-                  },
-                ],
-              },
-            ]}
-          />
-        </Blurb>
-
-        <Blurb id="alebot" align="left" title="Got a question?">
-          <p>
-            Want to find out more about me? Ask AleBot — the conversational AI I built to answer your curiosities.
-          </p>
-          <AleBot client:load />
-        </Blurb>
-
-        <Blurb id="impact" align="right" title="Highlighted impacts">
-          <p>
-            From velocity wins to cleaner user journeys, I focus on measurable outcomes that teams can feel week after week.
-          </p>
-        </Blurb>
-
-        <Blurb id="reputation" align="left" title="Don't just take my word for it">
-          <p>
-            I enjoy working in collaborative teams where trust, clear communication, and ownership create momentum.
-          </p>
-          <TestimonialTrain testimonials={testimonials} />
-        </Blurb>
-
-        <Blurb id="now" align="right" title="What I'm up to right now">
-          <p>
-            Refining product UX, tightening frontend architecture, and shipping features that feel fast and obvious.
-          </p>
-        </Blurb>
-
-        <Blurb id="growth" align="left" title="What I'm keen to get better at">
-          <p>
-            Design systems, product strategy, and thoughtful AI-assisted workflows that amplify both dev speed and quality.
-          </p>
-        </Blurb>
+        <!-- What I specialise in section. -->
+        <SpecialiseSection />
+        <!-- Stacks I believe in section. -->
+        <ToolkitSection />
+        <!-- Stuff I am proud of section. -->
+        <AcheivementsSection />
+        <!-- Employment history section. -->
+        <EmploymentHistorySection />
+        <!-- What I do in spare time section. -->
+        <HobbiesSection />
+        <!-- Contact section. -->
+        <ContactSection />
+        <!-- Blog previews section. -->
+        <BlogsSection />
       </div>
     </main>
+    <AleBotSection />
   </div>
 </Layout>
 
