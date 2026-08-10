@@ -4,11 +4,11 @@ export type Locale = (typeof locales)[number];
 export const ui = {
   en: {
     nav: {
-      craft: 'Craft',
+      specialisation: 'Specialisation',
       toolkit: 'Toolkit',
-      reputation: 'Reputation',
-      now: 'Now',
-      growth: 'Growth',
+      achievements: 'Achievements',
+      history: 'History',
+      hobbies: 'Hobbies',
       contact: 'Contact',
       blogs: 'Blogs',
       cta: "Let's Connect",
@@ -25,11 +25,11 @@ export const ui = {
   },
   it: {
     nav: {
-      craft: 'Lavoro',
+      specialisation: 'Specializzazione',
       toolkit: 'Strumenti',
-      reputation: 'Reputazione',
-      now: 'Ora',
-      growth: 'Crescita',
+      achievements: 'Traguardi',
+      history: 'Esperienza',
+      hobbies: 'Hobby',
       contact: 'Contatti',
       blogs: 'Blog',
       cta: 'Contattiamoci',
@@ -46,11 +46,11 @@ export const ui = {
   },
   de: {
     nav: {
-      craft: 'Arbeit',
+      specialisation: 'Spezialisierung',
       toolkit: 'Werkzeuge',
-      reputation: 'Reputation',
-      now: 'Jetzt',
-      growth: 'Wachstum',
+      achievements: 'Erfolge',
+      history: 'Werdegang',
+      hobbies: 'Hobbys',
       contact: 'Kontakt',
       blogs: 'Blog',
       cta: 'Kontaktieren',
@@ -67,11 +67,11 @@ export const ui = {
   },
   es: {
     nav: {
-      craft: 'Trabajo',
+      specialisation: 'Especialización',
       toolkit: 'Herramientas',
-      reputation: 'Reputación',
-      now: 'Ahora',
-      growth: 'Crecimiento',
+      achievements: 'Logros',
+      history: 'Experiencia',
+      hobbies: 'Aficiones',
       contact: 'Contacto',
       blogs: 'Blog',
       cta: 'Conectemos',
@@ -88,11 +88,11 @@ export const ui = {
   },
   ja: {
     nav: {
-      craft: '仕事',
+      specialisation: '専門分野',
       toolkit: 'ツール',
-      reputation: '評判',
-      now: '近況',
-      growth: '成長',
+      achievements: '実績',
+      history: '経歴',
+      hobbies: '趣味',
       contact: '連絡先',
       blogs: 'ブログ',
       cta: 'お問い合わせ',
@@ -109,11 +109,11 @@ export const ui = {
   },
   zh: {
     nav: {
-      craft: '工作',
+      specialisation: '专长',
       toolkit: '技术栈',
-      reputation: '口碑',
-      now: '近况',
-      growth: '成长',
+      achievements: '成就',
+      history: '经历',
+      hobbies: '爱好',
       contact: '联系方式',
       blogs: '博客',
       cta: '联系我',
