@@ -1,71 +1,81 @@
 ---
 import Blurb from '../../Blurb.astro';
 import './EmploymentHistorySection.css';
+import allonPacificLogo from '../../../assets/images/allon_pacific_logo.png';
+import infotrackLogo from '../../../assets/images/infotrack_logo.png';
+import matesLogo from '../../../assets/images/mates_icon.png';
 
 const CURRENT_YEAR = 2026;
 
+function formatDuration(start, end) {
+  const years = Math.max(end - start, 0);
+  if (years === 0) return '< 1 yr';
+  return `${years} ${years === 1 ? 'yr' : 'yrs'}`;
+}
+
 const jobs = [
   {
-    company: 'Company One',
+    company: 'Allon Pacific',
     role: 'Software Engineer',
-    description: 'Placeholder description of the role, responsibilities and impact at this company. Swap this out for the real story once you have it.',
-    start: 2016,
-    end: 2018,
-    accent: '#4fd4c4',
-  },
-  {
-    company: 'Company Two',
-    role: 'Senior Software Engineer',
-    description: 'Placeholder description of the role, responsibilities and impact at this company. Swap this out for the real story once you have it.',
-    start: 2018,
+    description: 'I owe my start in the tech industry to Allon, and to industry legend Dave Watson (my Obi-Wan Kenobi), at Allon I worked closely with the CTO to deliver an international education consulting product (website and app) learning the ins and outs of software development from the best in the business.',
+    start: 2019,
     end: 2021,
-    accent: '#f2b36f',
+    accent: '#000',
+    logo: allonPacificLogo,
   },
   {
-    company: 'Company Three',
-    role: 'Lead Frontend Engineer',
-    description: 'Placeholder description of the role, responsibilities and impact at this company. Swap this out for the real story once you have it.',
+    company: 'InfoTrack',
+    role: 'Senior Software Engineer / Team Leader',
+    description: 'From small start-up esque teams focusing on B2C legal offerings to big heavy weight teams like SettleIT, at InfoTrack I was able to get rich experience in almost every flavour of enterprise product, and in a variation of roles, moving into a senior engineer role and then team leadership',
     start: 2021,
-    end: 2024,
-    accent: '#7b61ff',
+    end: 2026,
+    accent: '#fff',
+    logo: infotrackLogo,
   },
   {
-    company: 'Company Four',
+    company: 'mates.com',
     role: 'Senior Software Engineer',
-    description: 'Placeholder description of the role, responsibilities and impact at this company. Swap this out for the real story once you have it.',
-    start: 2024,
+    description: 'Leading the front end app development at mates.com, an ambitious startup aiming to flip the world of social ecomomics on its head, I was responsible for looking after iOS and Android development in a high stakes environment.',
+    start: 2026,
     end: CURRENT_YEAR,
     current: true,
-    accent: '#59c3c3',
+    accent: '#000',
+    logo: matesLogo,
   },
 ];
 ---
 
 <Blurb id="now" align="right" title="My employment history">
   <p>
-    Refining product UX, tightening frontend architecture, and shipping features that feel fast and obvious.
+    Over the years I have worked at small start ups to big companies like InfoTrack,
+    Here is what I got up to on the tools:
   </p>
 
   <div class="timeline">
     <ol class="timeline-track">
       {[...jobs].reverse().map((job) => (
-        <li class="timeline-item" style={`flex-grow:${Math.max(job.end - job.start, 1)}`}>
-          <div class="timeline-card">
-            <div class="timeline-card-head">
-              <span class="timeline-logo" style={`background:${job.accent}`}>
-                {job.company.split(' ').map((w) => w[0]).join('').slice(0, 2)}
-              </span>
-              <div>
-                <h3>{job.company}</h3>
-                <p class="timeline-role">{job.role}</p>
-              </div>
-            </div>
-            <p class="timeline-description">{job.description}</p>
-          </div>
-          <div class="timeline-marker-row">
+        <li class="timeline-item">
+          <div class="timeline-marker-col">
             <span class="timeline-marker" style={`background:${job.accent}`}></span>
           </div>
-          <span class="timeline-range">{job.start} – {job.current ? 'Present' : job.end}</span>
+          <div class="timeline-content">
+            <span class="timeline-range">
+              {job.start} – {job.current ? 'Present' : job.end}
+              <span class="timeline-duration">({formatDuration(job.start, job.current ? CURRENT_YEAR : job.end)})</span>
+            </span>
+            <div class="timeline-card">
+              <div class="timeline-card-head">
+                <span class="timeline-logo" style={`background:${job.accent}`}>
+                  <img src={job.logo.src} alt={`${job.company} logo`} />
+                </span>
+                <div>
+                  <h3>{job.company}</h3>
+                  <p class="timeline-role">{job.role}</p>
+                </div>
+              </div>
+              <p class="timeline-description">{job.description}</p>
+            </div>
+          </div>
         </li>
       ))}
     </ol>

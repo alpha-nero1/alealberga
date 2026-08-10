@@ -37,12 +37,12 @@ const message = t.footer.messages[Math.floor(Math.random() * t.footer.messages.l
 				<div class="nav-links" id="primary-links">
 					<a href={`${base}/#craft`}>{t.nav.craft}</a>
 					<a href={`${base}/#toolkit`}>{t.nav.toolkit}</a>
-					<a href={`${base}/#impact`}>{t.nav.impact}</a>
 					<a href={`${base}/#reputation`}>{t.nav.reputation}</a>
 					<a href={`${base}/#now`}>{t.nav.now}</a>
 					<a href={`${base}/#growth`}>{t.nav.growth}</a>
+					<a href={`${base}/#contact`}>{t.nav.contact}</a>
 					<a href={`${base}/blogs`}>{t.nav.blogs}</a>
-					<a class="nav-cta mobile-cta" href={`${base}/#growth`}>{t.nav.cta}</a>
+					<a class="nav-cta mobile-cta" href={`${base}/#contact`}>{t.nav.cta}</a>
 				</div>
 				<details class="lang-switcher">
 					<summary class="lang-trigger">
@@ -58,7 +58,7 @@ const message = t.footer.messages[Math.floor(Math.random() * t.footer.messages.l
 						<li><a href="/zh/" class:list={[{ 'lang-active': locale === 'zh' }]}>ZH — 中文</a></li>
 					</ul>
 				</details>
-				<a class="nav-cta" href={`${base}/#growth`}>{t.nav.cta}</a>
+				<a class="nav-cta" href={`${base}/#contact`}>{t.nav.cta}</a>
 			</nav>
 		</header>
 		<slot />
@@ -135,10 +135,11 @@ const message = t.footer.messages[Math.floor(Math.random() * t.footer.messages.l
 		align-items: center;
 		justify-content: space-between;
 		gap: 0.7rem;
-		border: 1px solid rgba(201, 221, 255, 0.2);
+		border: 1px solid var(--edge);
 		border-radius: 999px;
-		background: rgba(10, 26, 45, 0.72);
-		box-shadow: 0 14px 30px rgba(2, 7, 20, 0.4);
+		background: linear-gradient(155deg, #122946 0%, #173557 62%, #18394d 100%);
+		box-shadow: var(--shadow);
+		backdrop-filter: blur(3px);
 	}
 
 	.brand {
@@ -147,7 +148,7 @@ const message = t.footer.messages[Math.floor(Math.random() * t.footer.messages.l
 		font-size: 1.03rem;
 		font-weight: 700;
 		letter-spacing: 0.02em;
-		color: #e6f1ff;
+		color: var(--ink);
 		text-decoration: none;
 	}
 
@@ -166,7 +167,7 @@ const message = t.footer.messages[Math.floor(Math.random() * t.footer.messages.l
 		display: none;
 		width: 2.4rem;
 		height: 2.4rem;
-		border: 1px solid rgba(201, 221, 255, 0.28);
+		border: 1px solid var(--edge);
 		border-radius: 0.85rem;
 		align-items: center;
 		justify-content: center;
@@ -181,7 +182,7 @@ const message = t.footer.messages[Math.floor(Math.random() * t.footer.messages.l
 		width: 1rem;
 		height: 2px;
 		border-radius: 99px;
-		background: #d2e5ff;
+		background: var(--ink);
 		transition: transform 180ms ease, opacity 180ms ease;
 	}
 
@@ -193,7 +194,7 @@ const message = t.footer.messages[Math.floor(Math.random() * t.footer.messages.l
 		font-size: 0.82rem;
 		font-weight: 700;
 		letter-spacing: 0.02em;
-		color: #d2e5ff;
+		color: var(--ink-soft);
 		text-decoration: none;
 		white-space: nowrap;
 		transition: background-color 180ms ease, color 180ms ease, transform 180ms ease;
@@ -204,7 +205,7 @@ const message = t.footer.messages[Math.floor(Math.random() * t.footer.messages.l
 	.nav-cta:hover,
 	.nav-cta:focus-visible {
 		background: rgba(79, 212, 196, 0.18);
-		color: #f6fcff;
+		color: var(--ink);
 		transform: translateY(-1px);
 		outline: none;
 	}
@@ -225,13 +226,13 @@ const message = t.footer.messages[Math.floor(Math.random() * t.footer.messages.l
 		gap: 0.3rem;
 		padding: 0.3rem 0.55rem;
 		border-radius: 999px;
-		border: 1px solid rgba(201, 221, 255, 0.2);
+		border: 1px solid var(--edge);
 		background: rgba(13, 34, 57, 0.68);
 		font-family: 'Plus Jakarta Sans', 'Trebuchet MS', sans-serif;
 		font-size: 0.72rem;
 		font-weight: 700;
 		letter-spacing: 0.06em;
-		color: #d2e5ff;
+		color: var(--ink-soft);
 		cursor: pointer;
 		list-style: none;
 		transition: background 160ms ease, color 160ms ease;
@@ -253,7 +254,7 @@ const message = t.footer.messages[Math.floor(Math.random() * t.footer.messages.l
 
 	.lang-trigger:hover {
 		background: rgba(79, 212, 196, 0.14);
-		color: #f6fcff;
+		color: var(--ink);
 	}
 
 	.lang-menu {
@@ -264,7 +265,7 @@ const message = t.footer.messages[Math.floor(Math.random() * t.footer.messages.l
 		margin: 0;
 		padding: 0.35rem;
 		list-style: none;
-		border: 1px solid rgba(201, 221, 255, 0.2);
+		border: 1px solid var(--edge);
 		border-radius: 14px;
 		background: rgba(10, 26, 45, 0.96);
 		box-shadow: 0 12px 30px rgba(2, 7, 20, 0.55);
@@ -284,18 +285,18 @@ const message = t.footer.messages[Math.floor(Math.random() * t.footer.messages.l
 		font-size: 0.78rem;
 		font-weight: 700;
 		letter-spacing: 0.03em;
-		color: #9eb6da;
+		color: var(--ink-soft);
 		text-decoration: none;
 		transition: background 140ms ease, color 140ms ease;
 	}
 
 	.lang-menu a:hover {
 		background: rgba(79, 212, 196, 0.12);
-		color: #f6fcff;
+		color: var(--ink);
 	}
 
 	.lang-menu a.lang-active {
-		color: #4fd4c4;
+		color: var(--accent);
 	}
 
 	.mobile-cta {
@@ -406,10 +407,10 @@ const message = t.footer.messages[Math.floor(Math.random() * t.footer.messages.l
 			right: 0;
 			left: 0;
 			padding: 0.55rem;
-			border: 1px solid rgba(201, 221, 255, 0.22);
+			border: 1px solid var(--edge);
 			border-radius: 16px;
-			background: rgba(10, 26, 45, 0.95);
-			box-shadow: 0 16px 40px rgba(2, 7, 20, 0.6);
+			background: linear-gradient(155deg, #122946 0%, #173557 62%, #18394d 100%);
+			box-shadow: var(--shadow);
 			flex-direction: column;
 			align-items: stretch;
 			gap: 0.3rem;

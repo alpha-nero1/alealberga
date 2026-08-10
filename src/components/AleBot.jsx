@@ -128,7 +128,7 @@ export default function AleBot() {
           ref={inputRef}
           className="alebot-input"
           type="text"
-          placeholder="Ask me anything about Ale…"
+          placeholder="What would you like to know about me?"
           value={input}
           onChange={(e) => setInput(e.target.value)}
           onKeyDown={handleKey}

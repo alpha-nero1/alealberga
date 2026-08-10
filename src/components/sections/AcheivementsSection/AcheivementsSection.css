@@ -40,31 +40,14 @@
   min-height: 400px;
   display: flex;
   flex-direction: column;
-  border: 1px solid var(--edge);
-  border-radius: 16px;
-  background: rgba(10, 26, 45, 0.4);
+  border: 3px solid transparent;
+  border-radius: 20px;
+  background:
+    linear-gradient(rgb(10, 26, 45), rgb(10, 26, 45)) padding-box,
+    linear-gradient(to bottom, var(--accent, #ffffff), #ffffff) border-box;
+  box-shadow: 0 16px 32px rgba(2, 7, 20, 0.5);
   scroll-snap-align: start;
-}
-
-.achievement-card::before,
-.achievement-card::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  z-index: -1;
-  border: 1px solid var(--edge);
-  border-radius: inherit;
-  background: rgba(10, 26, 45, 0.4);
-}
-
-.achievement-card::before {
-  transform: translate(6px, 7px) rotate(2.5deg);
-  opacity: 0.75;
-}
-
-.achievement-card::after {
-  transform: translate(11px, 13px) rotate(-2deg);
-  opacity: 0.45;
+  transform: rotate(var(--tilt, 0deg));
 }
 
 .achievement-card-image {
@@ -73,8 +56,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  border-bottom: 1px solid var(--edge);
-  border-radius: 16px 16px 0 0;
+  border-radius: 17px 17px 0 0;
 }
 
 .achievement-card-image svg {

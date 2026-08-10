@@ -2,7 +2,6 @@
 import Blurb from '../../Blurb.astro';
 import './SpecialiseSection.css';
 
-// Note: ADD A FRAMEWORKS SECTION HERE!
 const languages = [
   {
     name: 'JavaScript/TypeScript',
@@ -11,21 +10,39 @@ const languages = [
       { label: 'JS', bg: '#F7DF1E', fg: '#1a1a1a' },
       { label: 'TS', bg: '#3178C6', fg: '#ffffff' },
     ],
+    frameworks: [
+      { label: 'React', bg: '#3178C6', fg: '#ffffff' },
+      { label: 'Next.js', bg: '#111111', fg: '#ffffff' },
+      { label: 'Node.js', bg: '#F7DF1E', fg: '#1a1a1a' },
+      { label: 'Astro', bg: '#FF5D01', fg: '#ffffff' },
+    ],
   },
   {
     name: 'Python',
     reason: 'From serverless firebase/AWS functions, basic API test scripts to working with data and AI, python has proven itself time and time again to be a robust and flexible language allowing for untapped levels of creativity. It is one of my dearest.',
     logos: [{ label: 'Py', bg: '#4B8B3B', fg: '#ffffff' }],
+    frameworks: [
+      { label: 'Pandas', bg: '#4B8B3B', fg: '#ffffff' },
+      { label: 'Firebase', bg: '#FFCA28', fg: '#1a1a1a' },
+      { label: 'OpenAi', bg: '#150458', fg: '#ffffff' },
+      { label: 'Scikit-learn', bg: '#3178C6', fg: '#ffffff' },
+    ],
   },
   {
     name: 'CSharp',
     reason: 'CSharp and by extension dotnet, is an heavy hitter in writing backend solutions, this strongly typed but succinct language brings sophisticated backend solutions to life, and who doesn\'t love that!',
     logos: [{ label: 'C#', bg: '#684DBA', fg: '#ffffff' }, { label: 'Dotnet', bg: '#684DBA', fg: '#ffffff' }],
+    frameworks: [
+      { label: 'Dotnet', bg: '#684DBA', fg: '#ffffff' },
+    ],
   },
   {
     name: 'Dart',
     reason: 'A relative newcomer to my list, dart (and flutter) has made mobile app development the easiest it has ever been, it\'s purpose built and just makes sense, when starting a mobile app, I would not choose anything else.',
     logos: [{ label: 'Dart', bg: '#0175C2', fg: '#ffffff' }, { label: 'Flutter', bg: '#0175C2', fg: '#ffffff' }],
+    frameworks: [
+      { label: 'Flutter', bg: '#0175C2', fg: '#ffffff' },
+    ],
   },
 ];
 ---
@@ -40,10 +57,11 @@ const languages = [
       <div class="language-item">
         <h3>{lang.name}</h3>
         <p>{lang.reason}</p>
-        <div class="language-logos">
-          {lang.logos.map((logo) => (
-            <span class="language-logo" style={`background:${logo.bg}; color:${logo.fg};`}>
-              {logo.label}
+        <p class="frameworks-title">Specific frameworks</p>
+        <div class="framework-list">
+          {lang.frameworks.map((framework) => (
+            <span class="framework-chip" style={`background:${framework.bg}; color:${framework.fg};`}>
+              {framework.label}
             </span>
           ))}
         </div>

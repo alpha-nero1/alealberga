@@ -4,7 +4,7 @@
 
 .timeline-track {
   display: flex;
-  align-items: stretch;
+  flex-direction: column;
   margin: 0;
   padding: 0;
   list-style: none;
@@ -12,14 +12,66 @@
 
 .timeline-item {
   display: flex;
-  flex-direction: column;
-  flex-basis: 0;
-  min-width: 300px;
+  gap: 1rem;
+  padding-bottom: 1.4rem;
+}
+
+.timeline-item:last-child {
+  padding-bottom: 0;
+}
+
+.timeline-marker-col {
+  position: relative;
+  flex: 0 0 auto;
+  width: 22px;
+  display: flex;
+  justify-content: center;
+}
+
+.timeline-marker-col::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 2px;
+  background: var(--edge);
+  transform: translateX(-50%);
+}
+
+.timeline-item:last-child .timeline-marker-col::before {
+  display: none;
+}
+
+.timeline-marker {
+  position: relative;
+  z-index: 1;
+  top: 0.3rem;
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  border: 2px solid var(--surface);
+}
+
+.timeline-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.timeline-range {
+  display: block;
+  margin: 0 0 0.4rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--ink-soft);
+}
+
+.timeline-duration {
+  font-weight: 500;
+  opacity: 0.7;
 }
 
 .timeline-card {
-  flex: 1;
-  margin-right: 1rem;
   padding: 0.9rem 1rem;
   border: 1px solid var(--edge);
   border-radius: 14px;
@@ -40,9 +92,16 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: 0.4rem;
   font-size: 0.8rem;
   font-weight: 800;
   color: #ffffff;
+}
+
+.timeline-logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
 }
 
 .timeline-card-head h3 {
@@ -63,67 +122,4 @@
   color: var(--ink-soft);
   font-size: 0.83rem;
   line-height: 1.5;
-}
-
-.timeline-marker-row {
-  position: relative;
-  height: 22px;
-  margin-right: 1rem;
-}
-
-.timeline-marker-row::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 50%;
-  height: 2px;
-  background: var(--edge);
-  transform: translateY(-50%);
-}
-
-.timeline-marker {
-  position: relative;
-  z-index: 1;
-  display: block;
-  width: 11px;
-  height: 11px;
-  margin: 0 auto;
-  border-radius: 50%;
-  border: 2px solid var(--surface);
-}
-
-.timeline-range {
-  margin-right: 1rem;
-  display: block;
-  font-size: 0.72rem;
-  font-weight: 700;
-  color: var(--ink-soft);
-  text-align: center;
-}
-
-@media (max-width: 780px) {
-  .timeline-track {
-    flex-direction: column;
-  }
-
-  .timeline-item {
-    flex-basis: auto !important;
-    min-width: 0;
-  }
-
-  .timeline-marker-row {
-    display: none;
-  }
-
-  .timeline-card {
-    margin-right: 0;
-    margin-bottom: 0.4rem;
-  }
-
-  .timeline-range {
-    margin-right: 0;
-    margin-bottom: 0.9rem;
-    text-align: left;
-  }
 }
