@@ -6,10 +6,19 @@
 }
 
 .blog-preview-card {
+  display: block;
   padding: 0.85rem 1rem;
   border: 1px solid var(--edge);
   border-radius: 14px;
   background: rgba(10, 26, 45, 0.4);
+  text-decoration: none;
+  color: inherit;
+  transition: border-color 160ms ease, transform 160ms ease;
+}
+
+.blog-preview-card:hover {
+  border-color: rgba(79, 212, 196, 0.42);
+  transform: translateY(-2px);
 }
 
 .blog-preview-card h3 {

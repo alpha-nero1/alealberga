@@ -1,49 +1,60 @@
 ---
 import Blurb from '../../Blurb.astro';
 import './AcheivementsSection.css';
+import cciImage from '../../../assets/images/cci.jpg';
+import solutionsArchitectImage from '../../../assets/images/solutions_architect.webp';
 
 const achievements = [
   {
     title: 'FluentSRS | An app for language enthusiasts',
-    description: 'A short placeholder description of this achievement. Swap this out for the real story once you have it.',
+    description: 'An app that I built, pending appstore approval which revolutionlises the way we learn languages, taking the focus away from doom streaks of memorisation and towards speaking and producing the language.',
     year: '2026',
     accent: '#4fd4c4',
+    link: '#',
   },
   {
     title: 'Complete Dart/Flutter course | Udemy',
-    description: 'A short placeholder description of this achievement. Swap this out for the real story once you have it.',
+    description: 'By Maximillian Schwarzmuller, this 30 hour course ',
     year: '2026',
     accent: '#4fd4c4',
+    link: '#',
   },
   {
-    title: 'AI course | Udemy',
-    description: 'A short placeholder description of this achievement. Swap this out for the real story once you have it.',
+    title: 'AI Engineer Agentic Track: The Complete Agent & MCP Course | Udemy',
+    description: '',
     year: '2025',
     accent: '#4fd4c4',
+    link: '#',
   },
   {
     title: 'Associate AWS Solutions Architect | AWS',
     description: 'A short placeholder description of this achievement. Swap this out for the real story once you have it.',
     year: '2024',
     accent: '#f2b36f',
+    link: '#',
+    image: solutionsArchitectImage,
   },
   {
-    title: 'Machine Learning Masterclass | Udemy',
+    title: 'Python for Machine Learning & Data Science Masterclass | Udemy',
     description: 'A short placeholder description of this achievement. Swap this out for the real story once you have it.',
     year: '2023',
     accent: '#7b61ff',
+    link: '#',
   },
   {
     title: 'All 189 questions of the Cracking the Coding Interview',
     description: 'A short placeholder description of this achievement. Swap this out for the real story once you have it.',
     year: '2021',
     accent: '#59c3c3',
+    link: '#',
+    image: cciImage,
   },
   {
     title: 'Graduated at UTS',
     description: 'A short placeholder description of this achievement. Swap this out for the real story once you have it.',
     year: '2018',
     accent: '#59c3c3',
+    link: '#',
   },
 ];
 ---
@@ -65,21 +76,14 @@ const achievements = [
         return (
         <li class="achievement-card" style={`--accent: ${item.accent}; --tilt: 0deg;`}>
           <div class="achievement-card-image" style={`background: linear-gradient(150deg, ${item.accent}33, ${item.accent}0d);`}>
-            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" style={`color:${item.accent}`}>
-              <path
-                d="M8 21h8M12 17v4M7 4h10v4a5 5 0 0 1-10 0V4ZM7 5H4v1a3 3 0 0 0 3 3M17 5h3v1a3 3 0 0 1-3 3"
-                stroke="currentColor"
-                stroke-width="1.6"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              />
-            </svg>
+            {item.image && <img src={item.image.src} alt={item.title} />}
           </div>
           <div class="achievement-card-body">
             <h3>{item.title}</h3>
             <p>{item.description}</p>
           </div>
           <span class="achievement-chip">{item.year}</span>
+          <a class="achievement-link" href={item.link}>Find out more</a>
         </li>
         );
       })}

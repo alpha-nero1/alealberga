@@ -1,17 +1,11 @@
 ---
+import { getCollection } from 'astro:content';
 import Blurb from '../../Blurb.astro';
 import './BlogsSection.css';
 
-const previews = [
-  {
-    title: 'Post title coming soon',
-    excerpt: 'A first look at how I approach shipping Flutter apps without losing frontend polish.',
-  },
-  {
-    title: 'Post title coming soon',
-    excerpt: 'Notes on keeping a Dotnet API clean while a product is still finding its shape.',
-  },
-];
+const previews = (await getCollection('blog', ({ data }) => !data.draft))
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+  .slice(0, 2);
 ---
 
 <Blurb id="blogs" align="left" title="From the blog">
@@ -21,10 +15,10 @@ const previews = [
   </p>
   <div class="blog-preview-list">
     {previews.map((post) => (
-      <div class="blog-preview-card">
-        <h3>{post.title}</h3>
-        <p>{post.excerpt}</p>
-      </div>
+      <a class="blog-preview-card" href={`/blogs/${post.id}`}>
+        <h3>{post.data.title}</h3>
+        <p>{post.data.excerpt}</p>
+      </a>
     ))}
   </div>
   <a class="blog-preview-link" href="/blogs">Visit the blog →</a>

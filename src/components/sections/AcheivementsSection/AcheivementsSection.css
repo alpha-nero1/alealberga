@@ -56,12 +56,14 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow: hidden;
   border-radius: 17px 17px 0 0;
 }
 
-.achievement-card-image svg {
-  width: 2.6rem;
-  height: 2.6rem;
+.achievement-card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .achievement-card-body {
@@ -94,6 +96,21 @@
   font-size: 0.72rem;
   font-weight: 800;
   letter-spacing: 0.02em;
+}
+
+.achievement-link {
+  position: absolute;
+  right: 0.9rem;
+  bottom: 0.8rem;
+  color: var(--accent);
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-decoration: none;
+  transition: color 160ms ease;
+}
+
+.achievement-link:hover {
+  color: #f6fcff;
 }
 
 .achievement-nav {

@@ -27,3 +27,6 @@ Get in contact lower blurb.
 
 2026-08-07
 - Make the AI section enticing.
+
+## Tasks
+- [] Signoff the specialisation section.

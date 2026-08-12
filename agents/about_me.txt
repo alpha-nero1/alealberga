@@ -1,0 +1,78 @@
+## Who am I
+My name is Alessandro Alberga, my nickname is Ale and I go by that name.
+
+I am a Senior Software Engineer focusing on mobile app development, specifically in Dart/Flutter.
+
+I have 7+ years experience in building enterprise products that make a difference.
+
+Programming is one of my hobbies, I do what I love so I don't work a day in my life!
+
+## What I specialise in
+I specialise in 4 main programming languages; JavaScript/TypeScript, Python, C# and Dart.
+
+In these 4 languages I specialise in the following frameworks:
+- Python: OpenAi, Pandas, NumPy, Scikit-Learn, Firebase 
+- JavaScript/TypeScript: React, ReactNative, Astro.js, Next.js, Node.js
+- C#: Dotnet
+- Dart: Flutter
+
+## What technologies I usually use
+Building on my specialisations, there are several types of product types that are my specialty, these are:
+- Simple mobile applications: 
+
+## My empoyment history
+### Allon Pacific
+From 2019 to 2021 I worked at Allon Pacific, a small startup aimed at revolutionising
+the education consulting industry. In this time at Allon Pacific, I worked on the main website platform
+doing front end and back end duties, as well as a green field app that users could use during covid
+to find the right education internationally.
+
+Allon Pacific Pty Ltd (operating as AllOn) is an Australian-based software company that provides a cloud-based Customer Relationship Management (CRM) and Enterprise Resource Planning (ERP) platform.  Founded in 2018, the company specializes in creating "smart" business management tools designed primarily for advisory agencies to streamline their operations. 
+
+### InfoTrack
+From 2021 to 2026 I worked at InfoTrack, the leader in Australian legal technology. For most of this period (about 3 years) I lead development on InfoTrack's
+primary B2C offering called InfoTrackGO, in this time I worked on the back end and front end for offering legal products to consumers, this full stack role gave me comprehensive
+experience in enterprise systems and how to scale to new heights. In this time SEO was also a large focus, 1 main project was to get each property in Australia indexed on google, when users
+landed on this page they could purchase legal reports for the property directly, at the height of this effort we had 1 million pages indexed.
+
+In the last 2 years of the role I worked in SettleIT, a great and larger team within InfoTrack aiming to innovate electronic settlements allowing firms to take on more conveyancing work and drive business.
+This was a great role providing insight on how to motivate and drive progress in a 10+ member team, a vastly different exercise to just 2 or 3 people.
+
+Working at InfoTrack I started as a Junior role, moved into a Senior Engineer role then into Team Leadership.
+
+InfoTrack is a leading Australian technology company that provides a Software-as-a-Service (SaaS) platform for professionals in the legal, property, financial, and corporate sectors.  
+
+### Mates.com
+3. From 2026 to now I am working at Mates.com, a startup aimed at changing how mates interact and help eachother, with your trusted mates network you can get ahead, pay less for what you need and get life moving along with the people you trust.
+At mates.com I am responsible for leading the mobile app development, leading the dev on iOS & Android using Dart & Flutter. The app I have been working on features world class animations, high 120hz performance and UI with bespoke functionality.
+
+## Projects I am proud of
+### SEO project for InfoTrackGO at InfoTrack
+Leading the development on the InfoTrackGO product (InfoTrack's primary B2C offering), 
+
+## Education history
+### University
+I graduated a Bachelor of Information Technology (Cooperative Scholarship) at UTS in 2019.
+As part of my degree, I completed two 6 month internships, the first at Vivant Digital where I got
+invaluable experience writing code in a professional environment and the second at Westpac where I got experience in project management.
+
+### Ongoing learning
+Of course to keep the sword sharp and continually refine my craft, I have continued my learning in the technology sector by doing the following:
+- in 2021 I completed all 189 questions of the book "Cracking the coding interview", this made a huge personal improvement in how to approach algorithms and further my understanding of programming.
+- in 2023 I completed a Machine Learning Masterclass by Jose Portilla on Udemy where I learnt the ins and outs of machine learning and how to build and train smart predictive models.
+- in 2024 I completed the AWS Solutions Architect Associate course and certification wherein I solidified my understanding of AWS and the cloud.
+- in 2025 I completed an AI Agentic and MCP course by Ed Donner on Udemy, this course was fantastic as it gave me great exposure to how to build AI agents, workflows, MCP tools and how to apply all of this in the real world.
+- in 2026 I completed a Flutter & Dart Complete Guide course by Maximillian Schwarzmuller where I learnt flutter & dart in depth so that I could hit the ground running for my new role as a mobile developer lead.
+
+Over the years I have also completed Udemy courses on React Native, React & Dotnet, if changing technologies or tech stack for a new role, I always undertake a lenghty (30+ hours) udemy course to prepare me for the new job and hit the ground running.
+
+## My hobbies
+My hobbies are:
+- Running: I love to run, I completed a full Marathon at the end of 2025 and I have been training ever since to beat my marathon time. I find running really rewarding and a great way to blow off steam.
+- Gym: I also love going to the gym to stay nice and stong for all the marathon running, Gym is also a great stress reliever.
+- Chess: I'm really into my Chess, having reached 1400 elo on chess.com.
+- Langiages: I am also really into learning languages, speaking Italian fluently and trying to also learn German, I find languages really interesting and rewarding.
+- Coding! I also do a fair amount of coding in my spare time, I like to work on my own projects and I almost have a product to market! 
+
+## How can you reach me
+You can use the "Get in contact" form on my website to send me a message!
