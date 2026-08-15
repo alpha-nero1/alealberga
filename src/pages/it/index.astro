@@ -3,7 +3,6 @@ import Layout from '../../layouts/Layout.astro';
 import Blurb from '../../components/Blurb.astro';
 import AleBot from '../../components/AleBot.jsx';
 import '../index.css';
-import Stack from '../../components/Stack';
 import TestimonialTrain from '../../components/TestimonialTrain.astro';
 
 const testimonials = [
@@ -51,120 +50,6 @@ const testimonials = [
           <p>
             Mi importa di software che si senta chiaro, gentile e davvero utile. I migliori prodotti sono fiducia silenziosa in movimento.
           </p>
-        </Blurb>
-
-        <Blurb id="toolkit" align="right" title="Gli stack in cui credo">
-          <p>
-            È importante scegliere la tecnologia giusta per il compito in questione. I seguenti sono gli stack che utilizzo per diversi scenari, le tecnologie elencate sono quelle con cui ho più esperienza.
-          </p>
-          <Stack
-            client:load
-            scenarios={[
-              {
-                label: 'App Mobile',
-                summary: 'Flutter offre un unico codebase per iOS e Android, Dotnet mantiene la logica backend solida e testabile, e Postgres fornisce dati relazionali affidabili man mano che il prodotto cresce.',
-                items: [
-                  {
-                    label: 'Flutter/Dart',
-                    color: '#61DAFB',
-                    reason: 'Un unico codebase UI per iOS e Android riduce drasticamente i tempi di consegna mantenendo design e comportamento coerenti su entrambe le piattaforme.',
-                  },
-                  {
-                    label: 'Dotnet',
-                    color: '#7B61FF',
-                    reason: 'Tipizzazione forte, tooling maturo e layering pulito rendono le API più facili da scalare, testare e mantenere con la crescita del team.',
-                  },
-                  {
-                    label: 'Postgres',
-                    color: '#68A063',
-                    reason: 'Modellazione relazionale affidabile e query robuste supportano analytics, reporting e dati transazionali senza sorprese.',
-                  },
-                ],
-              },
-              {
-                label: 'App Mobile (semplice)',
-                summary: 'Ideale per la validazione rapida del prodotto: Flutter per spedire UI velocemente, Firebase per auth e funzionalità realtime gestite, con Postgres pronto quando il reporting strutturato diventa importante.',
-                items: [
-                  {
-                    label: 'Flutter/Dart',
-                    color: '#61DAFB',
-                    reason: "L'iterazione rapida per interfacce MVP permette di validare idee di prodotto velocemente con meno blocchi legati alle piattaforme.",
-                  },
-                  {
-                    label: 'Firebase',
-                    color: '#7B61FF',
-                    reason: 'Auth gestita, hosting e servizi realtime eliminano l\'overhead infrastrutturale così i team possono concentrarsi sull\'apprendimento del prodotto.',
-                  },
-                  {
-                    label: 'Postgres',
-                    color: '#68A063',
-                    reason: 'Quando la struttura dei dati diventa più definita, Postgres introduce reporting e consistenza senza ripensare l\'intera architettura.',
-                  },
-                ],
-              },
-              {
-                label: 'SPA',
-                summary: 'React offre un\'esperienza client fluida, Dotnet gestisce le API in modo pulito, e Postgres o MongoDB mantiene lo storage flessibile a seconda della profondità analytics e della forma dei dati.',
-                items: [
-                  {
-                    label: 'React',
-                    color: '#3178C6',
-                    reason: "L'architettura component-driven accelera la consegna di UI complesse mantenendo il comportamento prevedibile e riutilizzabile.",
-                  },
-                  {
-                    label: 'Dotnet',
-                    color: '#59C3C3',
-                    reason: 'Fornisce prestazioni API affidabili e contratti chiari per i team frontend che consumano logica business su scala.',
-                  },
-                  {
-                    label: 'Postgres/MongoDb',
-                    color: '#FF7A18',
-                    reason: 'Questa coppia offre flessibilità: rigore relazionale dove necessario e agilità document-style quando gli schemi di contenuto evolvono velocemente.',
-                  },
-                ],
-              },
-              {
-                label: 'SEO',
-                summary: 'Next.js o Astro massimizzano la scopribilità e le performance, Dotnet supporta integrazioni backend robuste, e MongoDB funziona bene per strutture ricche di contenuti che evolvono rapidamente.',
-                items: [
-                  {
-                    label: 'Next.js/Astro',
-                    color: '#FF5D01',
-                    reason: 'Le strategie di rendering statico e ibrido migliorano la scansionabilità e la velocità di pagina, due delle leve SEO più potenti.',
-                  },
-                  {
-                    label: 'Dotnet',
-                    color: '#4FD4C4',
-                    reason: 'I servizi backend stabili mantengono le integrazioni di contenuto resilienti, proteggendo affidabilità e flusso di pubblicazione.',
-                  },
-                  {
-                    label: 'MongoDb',
-                    color: '#F2B36F',
-                    reason: 'La modellazione flessibile dei documenti aiuta i team di contenuto a far evolvere strutture e metadati delle pagine senza migrazioni rigide.',
-                  },
-                ],
-              },
-              {
-                label: 'AI Scripting',
-                summary: 'Per scrivere flussi agentici, gerarchici o sequenziali, Python è il re.',
-                items: [
-                  {
-                    label: 'Python',
-                    color: '#61DAFB',
-                    reason: "Il suo ecosistema ha supporto di prima classe per framework di orchestrazione, SDK di modelli e tooling di dati usati nei flussi agentici.",
-                  },
-                  {
-                    label: 'Python',
-                    color: '#7B61FF',
-                  },
-                  {
-                    label: 'Python',
-                    color: '#68A063',
-                  },
-                ],
-              },
-            ]}
-          />
         </Blurb>
 
         <Blurb id="alebot" align="left" title="Hai una domanda?">

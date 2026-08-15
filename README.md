@@ -30,3 +30,5 @@ Get in contact lower blurb.
 
 ## Tasks
 - [] Signoff the specialisation section.
+    - [] Add AWS cloud specialisation section.
+- [] Signoff stacks I use section.
