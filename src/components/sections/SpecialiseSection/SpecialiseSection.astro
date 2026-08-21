@@ -45,27 +45,99 @@ const languages = [
     ],
   },
 ];
+
+const cloudAndData = [
+  {
+    name: 'AWS',
+    reason: 'Cloud infrastructure needs a dependable backbone, and AWS is my go to. From EC2 and Lambda through to S3 and RDS, I lean on AWS to build and scale production systems with confidence.',
+    frameworks: [
+      { label: 'EC2', bg: '#FF9900', fg: '#1a1a1a' },
+      { label: 'Lambda', bg: '#FF9900', fg: '#1a1a1a' },
+      { label: 'S3', bg: '#FF9900', fg: '#1a1a1a' },
+      { label: 'RDS', bg: '#FF9900', fg: '#1a1a1a' },
+    ],
+  },
+  {
+    name: 'Postgres',
+    reason: 'Postgres has become the industry standard in recent years, I have always used it and am very familiar with the syntax, its robust data integrity, performance and extensibility make it a very difficult choice to ignore if you need a relational DB.',
+  },
+  {
+    name: 'MongoDB',
+    reason: 'When the shape of your data is still evolving, MongoDB earns its keep. Flexible document modeling lets me iterate on schemas fast without fighting rigid migrations.',
+  },
+];
+
+const groups = [
+  { id: 'languages', label: 'Languages', items: languages },
+  { id: 'cloud', label: 'Cloud and Database tech', items: cloudAndData },
+];
 ---
 
 <Blurb id="craft" align="left" title="What do I specialise in?">
   <p>
-    I consider 4 languages to be my specialty, these 4 are very close to my heart as they have
+    I consider these languages and technologies to be my specialty, they are very close to my heart as they have
     served me well over the years.
   </p>
-  <div class="language-list">
-    {languages.map((lang) => (
-      <div class="language-item">
-        <h3>{lang.name}</h3>
-        <p>{lang.reason}</p>
-        <p class="frameworks-title">Specific frameworks</p>
-        <div class="framework-list">
-          {lang.frameworks.map((framework) => (
-            <span class="framework-chip" style={`background:${framework.bg}; color:${framework.fg};`}>
-              {framework.label}
-            </span>
-          ))}
-        </div>
+
+  <div class="specialise-tabbed">
+    <div class="specialise-tabs" role="tablist" aria-label="Specialisation categories">
+      {groups.map((group, i) => (
+        <button
+          type="button"
+          role="tab"
+          class={`specialise-tab${i === 0 ? ' is-active' : ''}`}
+          data-tab={group.id}
+          aria-selected={i === 0 ? 'true' : 'false'}
+        >
+          {group.label}
+        </button>
+      ))}
+    </div>
+
+    {groups.map((group, i) => (
+      <div class="language-list specialise-panel" data-panel={group.id} hidden={i !== 0}>
+        {group.items.map((item) => (
+          <div class="language-item">
+            <h3>{item.name}</h3>
+            <p>{item.reason}</p>
+            {item.frameworks && (
+              <>
+                <p class="frameworks-title">Specific frameworks</p>
+                <div class="framework-list">
+                  {item.frameworks.map((framework) => (
+                    <span class="framework-chip" style={`background:${framework.bg}; color:${framework.fg};`}>
+                      {framework.label}
+                    </span>
+                  ))}
+                </div>
+              </>
+            )}
+          </div>
+        ))}
       </div>
     ))}
   </div>
 </Blurb>
+
+<script>
+  document.querySelectorAll<HTMLElement>('.specialise-tabbed').forEach((wrap) => {
+    const tabs = wrap.querySelectorAll<HTMLButtonElement>('.specialise-tab');
+    const panels = wrap.querySelectorAll<HTMLElement>('.specialise-panel');
+
+    tabs.forEach((tab) => {
+      tab.addEventListener('click', () => {
+        const target = tab.dataset.tab;
+
+        tabs.forEach((t) => {
+          const isActive = t === tab;
+          t.classList.toggle('is-active', isActive);
+          t.setAttribute('aria-selected', String(isActive));
+        });
+
+        panels.forEach((panel) => {
+          panel.hidden = panel.dataset.panel !== target;
+        });
+      });
+    });
+  });
+</script>

@@ -1,8 +1,21 @@
-.contact-form {
+.contact-form-wrap {
   margin-top: 1rem;
+}
+
+.contact-form {
   display: flex;
   flex-direction: column;
   gap: 0.9rem;
+  overflow: hidden;
+  max-height: 600px;
+  opacity: 1;
+  transition: max-height 420ms ease, opacity 300ms ease;
+}
+
+.contact-form.is-sent {
+  max-height: 0;
+  opacity: 0;
+  pointer-events: none;
 }
 
 .contact-field {
@@ -44,9 +57,6 @@
 
 .contact-actions {
   margin-top: 0.2rem;
-  display: flex;
-  align-items: center;
-  gap: 0.9rem;
 }
 
 .contact-submit {
@@ -74,8 +84,13 @@
 }
 
 .contact-status {
+  margin: 0.7rem 0 0;
   font-size: 0.82rem;
   color: var(--ink-soft);
+}
+
+.contact-status:empty {
+  display: none;
 }
 
 .contact-status[data-state='success'] {
@@ -84,4 +99,13 @@
 
 .contact-status[data-state='error'] {
   color: var(--accent-warm);
+}
+
+.link {
+  color: var(--accent);
+  font-size: 1rem;
+  font-weight: 700;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: color 160ms ease;
 }

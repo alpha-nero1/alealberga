@@ -2,6 +2,7 @@
 import { getCollection } from 'astro:content';
 import Layout from '../layouts/Layout.astro';
 import './index.css';
+import './blogs.css';
 
 const posts = (await getCollection('blog', ({ data }) => !data.draft)).sort(
   (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
@@ -10,7 +11,7 @@ const posts = (await getCollection('blog', ({ data }) => !data.draft)).sort(
 
 <Layout>
   <div id="container">
-    <main>
+    <main class="blog-page">
       <section id="home">
         <h1>Blogs</h1>
         <p class="hero-intro">Here's what I have to say about the tech of today (and the future).</p>
@@ -36,56 +37,3 @@ const posts = (await getCollection('blog', ({ data }) => !data.draft)).sort(
     </main>
   </div>
 </Layout>
-
-<style>
-  .blog-list {
-    margin: 1.6rem 0 0;
-    padding: 0;
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: 0.9rem;
-  }
-
-  .blog-list-item {
-    border: 1px solid var(--edge);
-    border-radius: 16px;
-    background: rgba(10, 26, 45, 0.4);
-    transition: border-color 160ms ease, transform 160ms ease;
-  }
-
-  .blog-list-item:hover {
-    border-color: rgba(79, 212, 196, 0.42);
-    transform: translateY(-2px);
-  }
-
-  .blog-list-item a {
-    display: block;
-    padding: 1.1rem 1.3rem;
-    text-decoration: none;
-    color: inherit;
-  }
-
-  .blog-list-date {
-    margin: 0 0 0.35rem;
-    color: var(--ink-soft);
-    font-size: 0.74rem;
-    font-weight: 700;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-  }
-
-  .blog-list-item h2 {
-    margin: 0;
-    font-family: 'Fraunces', Georgia, serif;
-    font-size: 1.2rem;
-    color: var(--ink);
-  }
-
-  .blog-list-excerpt {
-    margin: 0.5rem 0 0;
-    color: var(--ink-soft);
-    font-size: 0.9rem;
-    line-height: 1.55;
-  }
-</style>

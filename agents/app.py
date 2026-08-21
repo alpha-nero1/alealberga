@@ -22,8 +22,23 @@ agent = Agent(
 )
 
 
+def _extract_text(content) -> str:
+    if isinstance(content, str):
+        return content
+    if isinstance(content, list):
+        return "".join(
+            part.get("text", "") if isinstance(part, dict) else str(part)
+            for part in content
+        )
+    return str(content)
+
+
 def respond(message: str, history: list[dict]) -> str:
-    input_list = history + [{"role": "user", "content": message}]
+    clean_history = [
+        {"role": item["role"], "content": _extract_text(item["content"])}
+        for item in history
+    ]
+    input_list = clean_history + [{"role": "user", "content": message}]
     result = Runner.run_sync(agent, input=input_list)
     return result.final_output
 

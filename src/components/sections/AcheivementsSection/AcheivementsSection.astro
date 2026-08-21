@@ -3,6 +3,9 @@ import Blurb from '../../Blurb.astro';
 import './AcheivementsSection.css';
 import cciImage from '../../../assets/images/cci.jpg';
 import solutionsArchitectImage from '../../../assets/images/solutions_architect.webp';
+import udemyImage from '../../../assets/images/udemy.png';
+import utsImage from '../../../assets/images/uts.png';
+import fluentSrs from '../../../assets/images/fluentsrs.png';
 
 const achievements = [
   {
@@ -10,28 +13,31 @@ const achievements = [
     description: 'An app that I built, pending appstore approval which revolutionlises the way we learn languages, taking the focus away from doom streaks of memorisation and towards speaking and producing the language.',
     year: '2026',
     accent: '#4fd4c4',
-    link: '#',
+    link: 'https://preview.fluentsrs.pages.dev',
+    image: fluentSrs
   },
   {
     title: 'Complete Dart/Flutter course | Udemy',
     description: 'By Maximillian Schwarzmuller, this 30 hour course ',
     year: '2026',
     accent: '#4fd4c4',
-    link: '#',
+    link: 'https://www.udemy.com/course/learn-flutter-dart-to-build-ios-android-apps',
+    image: udemyImage
   },
   {
     title: 'AI Engineer Agentic Track: The Complete Agent & MCP Course | Udemy',
     description: '',
     year: '2025',
     accent: '#4fd4c4',
-    link: '#',
+    link: 'https://www.udemy.com/course/the-complete-agentic-ai-engineering-course',
+    image: udemyImage
   },
   {
     title: 'Associate AWS Solutions Architect | AWS',
     description: 'A short placeholder description of this achievement. Swap this out for the real story once you have it.',
     year: '2024',
     accent: '#f2b36f',
-    link: '#',
+    link: 'https://docs.aws.amazon.com/aws-certification/latest/solutions-architect-associate-03/solutions-architect-associate-03.html',
     image: solutionsArchitectImage,
   },
   {
@@ -39,14 +45,15 @@ const achievements = [
     description: 'A short placeholder description of this achievement. Swap this out for the real story once you have it.',
     year: '2023',
     accent: '#7b61ff',
-    link: '#',
+    link: 'https://www.udemy.com/course/python-for-machine-learning-data-science-masterclass',
+    image: udemyImage
   },
   {
     title: 'All 189 questions of the Cracking the Coding Interview',
     description: 'A short placeholder description of this achievement. Swap this out for the real story once you have it.',
     year: '2021',
     accent: '#59c3c3',
-    link: '#',
+    link: 'https://github.com/alpha-nero1/KnowledgeBase/tree/master/Courses/CrackingTheCodingInterview',
     image: cciImage,
   },
   {
@@ -54,12 +61,13 @@ const achievements = [
     description: 'A short placeholder description of this achievement. Swap this out for the real story once you have it.',
     year: '2018',
     accent: '#59c3c3',
-    link: '#',
+    link: 'https://www.uts.edu.au/for-students/admissions-entry/scholarships/scholarships-search/bachelor-of-information-technology-co-op-scholarship',
+    image: utsImage
   },
 ];
 ---
 
-<Blurb id="reputation" align="left" title="Cool things I have done over the years">
+<Blurb id="reputation" align="right" title="Cool things I have done over the years">
   <p>
     Over the years I have acheived several feats that I am proud of
   </p>
@@ -82,8 +90,10 @@ const achievements = [
             <h3>{item.title}</h3>
             <p>{item.description}</p>
           </div>
-          <span class="achievement-chip">{item.year}</span>
-          <a class="achievement-link" href={item.link}>Find out more</a>
+          <div class="achievement-card-footer">
+            <span class="achievement-chip">{item.year}</span>
+            <a class="achievement-link" href={item.link} target="_blank" rel="noreferrer">Find out more</a>
+          </div>
         </li>
         );
       })}
@@ -125,6 +135,7 @@ const achievements = [
 
     track.addEventListener('pointerdown', (e) => {
       if (e.pointerType !== 'mouse') return;
+      if (e.target instanceof HTMLElement && e.target.closest('a, button')) return;
       isDragging = true;
       dragMoved = false;
       dragStartX = e.clientX;
@@ -136,7 +147,7 @@ const achievements = [
     track.addEventListener('pointermove', (e) => {
       if (!isDragging) return;
       const delta = e.clientX - dragStartX;
-      if (Math.abs(delta) > 4) dragMoved = true;
+      if (Math.abs(delta) > 8) dragMoved = true;
       track.scrollLeft = dragStartScroll - delta;
     });
 

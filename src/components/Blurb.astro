@@ -3,12 +3,13 @@ interface Props {
   id?: string;
   align?: 'left' | 'right';
   title: string;
+  class?: string;
 }
 
-const { id, align = 'left', title } = Astro.props;
+const { id, align = 'left', title, class: className } = Astro.props;
 ---
 
-<article id={id} class={`blurb-card ${align}`}>
+<article id={id} class={`blurb-card ${align} ${className ?? ''}`}>
   <h2>{title}</h2>
   <div class="blurb-body">
     <slot />

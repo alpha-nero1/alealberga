@@ -1,5 +1,46 @@
+.specialise-tabbed {
+  margin-top: 1.1rem;
+}
+
+.specialise-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 0.9rem;
+}
+
+.specialise-tab {
+  appearance: none;
+  border: 1px solid var(--edge);
+  border-radius: 999px;
+  padding: 0.45rem 0.9rem;
+  background: rgba(11, 24, 42, 0.62);
+  color: var(--ink-soft);
+  font-family: inherit;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  transition: border-color 180ms ease, background 180ms ease, color 180ms ease, transform 180ms ease;
+}
+
+.specialise-tab:hover {
+  border-color: rgba(79, 212, 196, 0.58);
+  background: rgba(16, 38, 62, 0.78);
+}
+
+.specialise-tab.is-active {
+  border-color: rgba(79, 212, 196, 0.9);
+  background: rgba(31, 81, 90, 0.48);
+  color: var(--ink);
+  transform: translateY(-1px);
+}
+
+.specialise-panel[hidden] {
+  display: none;
+}
+
 .language-list {
-  margin-top: 1rem;
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 0.9rem;

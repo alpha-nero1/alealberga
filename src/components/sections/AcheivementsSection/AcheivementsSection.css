@@ -84,10 +84,18 @@
   line-height: 1.5;
 }
 
-.achievement-chip {
+.achievement-card-footer {
   position: absolute;
   left: 0.9rem;
+  right: 0.9rem;
   bottom: 0.8rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.6rem;
+}
+
+.achievement-chip {
   padding: 0.25rem 0.6rem;
   border: 1px solid var(--edge);
   border-radius: 999px;
@@ -99,13 +107,11 @@
 }
 
 .achievement-link {
-  position: absolute;
-  right: 0.9rem;
-  bottom: 0.8rem;
   color: var(--accent);
   font-size: 0.78rem;
   font-weight: 700;
   text-decoration: none;
+  white-space: nowrap;
   transition: color 160ms ease;
 }
 
