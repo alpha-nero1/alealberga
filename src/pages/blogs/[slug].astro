@@ -19,9 +19,28 @@ const formattedDate = post.data.pubDate.toLocaleDateString('en-AU', {
   month: 'long',
   day: 'numeric',
 });
+
+const postSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BlogPosting',
+  headline: post.data.title,
+  description: post.data.excerpt,
+  datePublished: post.data.pubDate.toISOString(),
+  url: new URL(`/blogs/${post.id}`, Astro.site).toString(),
+  author: {
+    '@type': 'Person',
+    name: 'Alessandro Alberga',
+    url: 'https://alealberga.com',
+  },
+};
 ---
 
-<Layout>
+<Layout
+  title={`${post.data.title} | Ale Alberga`}
+  description={post.data.excerpt}
+  type="article"
+  publishedTime={post.data.pubDate}
+>
   <div id="container">
     <main class="post-page">
       <article class="post">
@@ -35,3 +54,5 @@ const formattedDate = post.data.pubDate.toLocaleDateString('en-AU', {
     </main>
   </div>
 </Layout>
+
+<script type="application/ld+json" set:html={JSON.stringify(postSchema)} is:inline />

@@ -2,6 +2,7 @@
 title: "Flutter vs React Native"
 excerpt: "When it comes to building mobile apps, this is generally the main thing that must be decided, here are the ins and outs of react vs flutter"
 pubDate: 2026-08-11
+draft: true
 ---
 
 Every mobile project eventually hits the same fork in the road: React Native or Flutter?

@@ -7,7 +7,7 @@ import './ContactSection.css';
   <p>
     Got a project, a role, or just want to say hi? Send a message and I'll get back to you.
   </p>
-  <p>Alternatively, reach out to me on <a class="link" href="https://www.linkedin.com/in/alessandro-alberga-0a3b23117/"  target="_blank" rel="noreferrer">linked in</a>!</p>
+  <p>Alternatively, reach out to me on <a class="link" href="https://www.linkedin.com/in/alessandro-alberga-0a3b23117/" target="_blank" rel="noreferrer">LinkedIn</a>!</p>
 
 
   <div class="contact-form-wrap">
@@ -27,6 +27,12 @@ import './ContactSection.css';
         <textarea id="contact-message" name="message" rows="4" required></textarea>
       </div>
 
+      <div
+        class="cf-turnstile"
+        data-sitekey="0x4AAAAAAEZ7q2SBS1gYTwdJ"
+        data-action="contact"
+      ></div>
+
       <div class="contact-actions">
         <button class="contact-submit" type="submit">Send message</button>
       </div>
@@ -35,12 +41,27 @@ import './ContactSection.css';
   </div>
 </Blurb>
 
+<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+
 <script>
+  declare global {
+    interface Window {
+      turnstile?: {
+        reset: (widgetId?: string | HTMLElement) => void;
+      };
+    }
+  }
+
   document.querySelectorAll<HTMLElement>('.contact-form-wrap').forEach((wrap) => {
     const form = wrap.querySelector<HTMLFormElement>('.contact-form');
     const submitBtn = wrap.querySelector<HTMLButtonElement>('.contact-submit');
     const status = wrap.querySelector<HTMLElement>('.contact-status');
+    const turnstileEl = wrap.querySelector<HTMLElement>('.cf-turnstile');
     if (!form || !submitBtn || !status) return;
+
+    function resetTurnstile() {
+      if (turnstileEl) window.turnstile?.reset(turnstileEl);
+    }
 
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
@@ -50,10 +71,17 @@ import './ContactSection.css';
         name: String(formData.get('name') ?? '').trim(),
         email: String(formData.get('email') ?? '').trim(),
         message: String(formData.get('message') ?? '').trim(),
+        turnstileToken: String(formData.get('cf-turnstile-response') ?? ''),
       };
 
       if (!payload.name || !payload.email || !payload.message) {
         status.textContent = 'Please fill in every field.';
+        status.dataset.state = 'error';
+        return;
+      }
+
+      if (!payload.turnstileToken) {
+        status.textContent = 'Please complete the verification check.';
         status.dataset.state = 'error';
         return;
       }
@@ -80,9 +108,10 @@ import './ContactSection.css';
         form.classList.add('is-sent');
         form.setAttribute('inert', '');
       } catch {
-        status.textContent = 'Something went wrong. Try again, or message me directly on linked in!';
+        status.textContent = 'Something went wrong. Try again, or message me directly on LinkedIn!';
         status.dataset.state = 'error';
         submitBtn.disabled = false;
+        resetTurnstile();
       }
     });
   });

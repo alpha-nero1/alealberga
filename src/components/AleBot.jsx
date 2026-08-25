@@ -6,6 +6,9 @@ const SUGGESTIONS = [
   "What is Ale working on right now?",
 ];
 
+// Keep in sync with MAX_MESSAGE_LENGTH in src/pages/api/chat.ts.
+const MAX_MESSAGE_LENGTH = 2000;
+
 function BotMessage({ content, streaming }) {
   return (
     <div className="alebot-msg alebot-msg--bot">
@@ -134,6 +137,7 @@ export default function AleBot() {
           onKeyDown={handleKey}
           disabled={loading}
           autoComplete="off"
+          maxLength={MAX_MESSAGE_LENGTH}
         />
         <button
           className="alebot-send"

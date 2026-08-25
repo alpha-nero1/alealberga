@@ -7,10 +7,18 @@ import udemyImage from '../../../assets/images/udemy.png';
 import utsImage from '../../../assets/images/uts.png';
 import fluentSrs from '../../../assets/images/fluentsrs.png';
 
+// Description copy is written as multiline template literals for easier review/editing,
+// then collapsed back into flowing single-line paragraph text for rendering.
+const clean = (text: string) => text.replace(/\s+/g, ' ').trim();
+
 const achievements = [
   {
     title: 'FluentSRS | An app for language enthusiasts',
-    description: 'An app that I built, pending appstore approval which revolutionlises the way we learn languages, taking the focus away from doom streaks of memorisation and towards speaking and producing the language.',
+    description: clean(`
+      A worthy mention in my arsenal of projects, FluentSRS is a mobile app aimed at revolutionising language learning
+      putting the focus back on speaking and continual improvement, bringing the user ever closer to a native speaking
+      level of fluency. The app I wanted for learning languages didn't exist, so, I built it!
+    `),
     year: '2026',
     accent: '#4fd4c4',
     link: 'https://preview.fluentsrs.pages.dev',
@@ -18,7 +26,10 @@ const achievements = [
   },
   {
     title: 'Complete Dart/Flutter course | Udemy',
-    description: 'By Maximillian Schwarzmuller, this 30 hour course ',
+    description: clean(`
+      By Maximillian Schwarzmuller, this 30 hour course provided me with the rock-solid foundation I needed to be able to hit the ground running
+      in my new role at Mates.com!
+    `),
     year: '2026',
     accent: '#4fd4c4',
     link: 'https://www.udemy.com/course/learn-flutter-dart-to-build-ios-android-apps',
@@ -26,7 +37,11 @@ const achievements = [
   },
   {
     title: 'AI Engineer Agentic Track: The Complete Agent & MCP Course | Udemy',
-    description: '',
+    description: clean(`
+      By Ed Donner, this 21 hour course teaches you the ins and outs of so many new AI technologies and frameworks,
+      from OpenAI Agents, to CrewAI, LangGraph and MCP servers this holistic agentic course gave me the leg up I needed
+      to pioneer agentic solutions in my career.
+    `),
     year: '2025',
     accent: '#4fd4c4',
     link: 'https://www.udemy.com/course/the-complete-agentic-ai-engineering-course',
@@ -34,7 +49,10 @@ const achievements = [
   },
   {
     title: 'Associate AWS Solutions Architect | AWS',
-    description: 'A short placeholder description of this achievement. Swap this out for the real story once you have it.',
+    description: clean(`
+      The AWS-SOC3 certification is an important certification from AWS, certifying that the holder understands the AWS ecosystem
+      and the exact tech to bring to the table to implement resilient, scalable and high performant solutions.
+    `),
     year: '2024',
     accent: '#f2b36f',
     link: 'https://docs.aws.amazon.com/aws-certification/latest/solutions-architect-associate-03/solutions-architect-associate-03.html',
@@ -42,7 +60,11 @@ const achievements = [
   },
   {
     title: 'Python for Machine Learning & Data Science Masterclass | Udemy',
-    description: 'A short placeholder description of this achievement. Swap this out for the real story once you have it.',
+    description: clean(`
+      This amazing 44 hour course by Jose Portilla, provided in depth knowledge and know-how of building machine learning solutions, before agentic AI (and still to this day)
+      classic ML models are fantastic for powering predictive workflows. This course empowered me to build AI solutions such as fraud detection algorithms, churn detection models
+      and user segmentation algorithms.
+    `),
     year: '2023',
     accent: '#7b61ff',
     link: 'https://www.udemy.com/course/python-for-machine-learning-data-science-masterclass',
@@ -50,7 +72,11 @@ const achievements = [
   },
   {
     title: 'All 189 questions of the Cracking the Coding Interview',
-    description: 'A short placeholder description of this achievement. Swap this out for the real story once you have it.',
+    description: clean(`
+      In my humble opinion this masterpiece by Gayle Laakmann McDowell is a rite of passage for any developer into the path of seniority. Solving each
+      of the questions in this comprehensive book and comparing my solutions to those in the book truly empowered me to be able to tackle any size of programming
+      challenge with confidence, greatly aiding me in my career.
+    `),
     year: '2021',
     accent: '#59c3c3',
     link: 'https://github.com/alpha-nero1/KnowledgeBase/tree/master/Courses/CrackingTheCodingInterview',
@@ -58,7 +84,10 @@ const achievements = [
   },
   {
     title: 'Graduated at UTS',
-    description: 'A short placeholder description of this achievement. Swap this out for the real story once you have it.',
+    description: clean(`
+      Having graduated from UTS with a bachelor of IT co-op scholarship, I was set up to begin a rewarding career in software development, from programming courses
+      to important industry placements, as well as a great cohort of UTS' best and brightest to learn from, my 3 years at UTS gave me the set up I needed.
+    `),
     year: '2018',
     accent: '#59c3c3',
     link: 'https://www.uts.edu.au/for-students/admissions-entry/scholarships/scholarships-search/bachelor-of-information-technology-co-op-scholarship',
@@ -67,9 +96,10 @@ const achievements = [
 ];
 ---
 
-<Blurb id="reputation" align="right" title="Cool things I have done over the years">
+<Blurb id="reputation" align="right" title="How I keep on top of an ever evolving industry">
   <p>
-    Over the years I have acheived several feats that I am proud of
+    It's critical to continually sharpen the sword, apart from small projects I have done in my own time, 
+    these are the specific things I have done to keep on top of my game
   </p>
 
   <div class="achievement-carousel">

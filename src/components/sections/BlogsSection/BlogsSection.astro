@@ -9,10 +9,7 @@ const previews = (await getCollection('blog', ({ data }) => !data.draft))
 ---
 
 <Blurb id="blogs" align="right" title="From the blog">
-  <p>
-    I write up lessons from shipping products, mostly around Flutter, frontend architecture, and AI-assisted
-    workflows. New posts are on the way.
-  </p>
+  <p>Thoughts on the tech of today, the tools I can't stop talking about, and where I think it's all headed</p>
   <div class="blog-preview-list">
     {previews.map((post) => (
       <a class="blog-preview-card" href={`/blogs/${post.id}`}>

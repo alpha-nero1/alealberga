@@ -63,6 +63,9 @@ I graduated a Bachelor of Information Technology (Cooperative Scholarship) at UT
 ## How can you reach me
 You can use the "Get in contact" form on my website to send me a message!`;
 
+const MAX_MESSAGE_LENGTH = 2000;
+const MAX_HISTORY_LENGTH = 40;
+
 const SYSTEM_PROMPT = `You are AleBot, a friendly and concise AI assistant representing Alessandro (Ale) Alberga, a senior software engineer, on his portfolio website.
 
 Answer questions about Ale in first person on his behalf (e.g. "I built..." or "I enjoy...").
@@ -77,6 +80,15 @@ export const POST: APIRoute = async ({ request }) => {
 	if (!apiKey) {
 		return new Response(JSON.stringify({ error: 'OpenAI API key not configured.' }), {
 			status: 500,
+			headers: { 'Content-Type': 'application/json' },
+		});
+	}
+
+	const clientIp = request.headers.get('CF-Connecting-IP') ?? 'unknown';
+	const rateLimit = await env.CHAT_RATE_LIMITER?.limit({ key: clientIp });
+	if (rateLimit && !rateLimit.success) {
+		return new Response(JSON.stringify({ error: 'Too many requests, please slow down.' }), {
+			status: 429,
 			headers: { 'Content-Type': 'application/json' },
 		});
 	}
@@ -97,6 +109,23 @@ export const POST: APIRoute = async ({ request }) => {
 
 	if (!userMessages.length) {
 		return new Response(JSON.stringify({ error: 'No messages provided.' }), {
+			status: 400,
+			headers: { 'Content-Type': 'application/json' },
+		});
+	}
+
+	if (userMessages.length > MAX_HISTORY_LENGTH) {
+		return new Response(JSON.stringify({ error: 'Conversation is too long.' }), {
+			status: 400,
+			headers: { 'Content-Type': 'application/json' },
+		});
+	}
+
+	const oversizedMessage = userMessages.find(
+		(m) => typeof m.content !== 'string' || m.content.length > MAX_MESSAGE_LENGTH
+	);
+	if (oversizedMessage) {
+		return new Response(JSON.stringify({ error: 'Message is too long.' }), {
 			status: 400,
 			headers: { 'Content-Type': 'application/json' },
 		});

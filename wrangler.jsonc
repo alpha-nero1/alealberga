@@ -1,0 +1,17 @@
+{
+	"$schema": "node_modules/wrangler/config-schema.json",
+	"name": "alealberga",
+	"compatibility_date": "2026-04-15",
+	"ratelimits": [
+		{
+			"name": "CHAT_RATE_LIMITER",
+			"namespace_id": "1001",
+			"simple": { "limit": 20, "period": 60 }
+		},
+		{
+			"name": "CONTACT_RATE_LIMITER",
+			"namespace_id": "1002",
+			"simple": { "limit": 3, "period": 60 }
+		}
+	]
+}

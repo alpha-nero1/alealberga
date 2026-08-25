@@ -9,7 +9,10 @@ const posts = (await getCollection('blog', ({ data }) => !data.draft)).sort(
 );
 ---
 
-<Layout>
+<Layout
+  title="Blogs | Ale Alberga"
+  description="Thoughts on software engineering, Flutter, front-end architecture, and AI — written by Ale Alberga."
+>
   <div id="container">
     <main class="blog-page">
       <section id="home">

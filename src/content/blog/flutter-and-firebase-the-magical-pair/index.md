@@ -2,6 +2,7 @@
 title: "Flutter and Firebase, the magical pair"
 excerpt: "Do you have an idea you want to prove, a great product that isn't overly complex that you want to get to market quickly? this is how I ship product with Flutter & Firebase and why it is better than some might think"
 pubDate: 2026-08-11
+draft: true
 ---
 
 Ever had an idea in the shower or on the bus and wanted to give it a red hot crack? In these scenarios I opt for Flutter and Firebase every time, and here's why:

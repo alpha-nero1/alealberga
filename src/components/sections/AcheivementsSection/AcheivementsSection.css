@@ -36,7 +36,7 @@
 .achievement-card {
   position: relative;
   flex: 0 0 auto;
-  width: min(240px, 74vw);
+  width: min(260px, 74vw);
   min-height: 400px;
   display: flex;
   flex-direction: column;
