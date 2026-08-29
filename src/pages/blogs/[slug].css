@@ -83,13 +83,22 @@
   display: block;
   max-width: 100%;
   height: auto;
-  margin: 1.4rem 0;
+  margin: 1.4rem auto;
   border-radius: 12px;
   border: 1px solid var(--edge);
 }
 
+.post-body figure {
+  margin: 1.4rem 0;
+  text-align: center;
+}
+
+.post-body figure img {
+  margin: 0 auto;
+}
+
 .post-body figcaption {
-  margin: 0.5rem 0 1.4rem;
+  margin: 0.5rem 0 0;
   color: var(--ink-soft);
   font-size: 0.82rem;
   text-align: center;

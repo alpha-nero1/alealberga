@@ -17,7 +17,6 @@ const posts = (await getCollection('blog', ({ data }) => !data.draft)).sort(
     <main class="blog-page">
       <section id="home">
         <h1>Blogs</h1>
-        <p class="hero-intro">Here's what I have to say about the tech of today (and the future).</p>
       </section>
 
       {posts.length === 0 ? (
