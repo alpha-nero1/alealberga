@@ -1,7 +1,7 @@
 ---
 title: "Flutter and Firebase, the magical pair"
 excerpt: "Do you have an idea you want to prove, a great product that isn't overly complex that you want to get to market quickly? this is how I ship product with Flutter & Firebase and why it is better than some might think"
-pubDate: 2026-08-11
+pubDate: 2026-08-29
 draft: false
 ---
 
