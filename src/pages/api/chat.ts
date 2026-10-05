@@ -7,7 +7,7 @@ import OpenAI from 'openai';
 const BIO_TEXT = `## Who am I
 My name is Alessandro Alberga, my nickname is Ale and I go by that name.
 
-I am a Senior Software Engineer focusing on mobile app development, specifically in Dart/Flutter.
+I am a Senior Software Engineer & Tech Lead focusing on mobile app development, specifically in Dart/Flutter.
 
 I have 8+ years experience in building enterprise products that make a difference.
 
