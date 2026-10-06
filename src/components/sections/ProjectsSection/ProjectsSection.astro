@@ -1,0 +1,250 @@
+---
+import Blurb from '../../Blurb.astro';
+import TechChip from '../../TechChip.astro';
+import './ProjectsSection.css';
+
+// Description/outcome copy is written as multiline template literals for easier review/editing,
+// then collapsed back into flowing single-line paragraph text for rendering.
+const clean = (text: string) => text.replace(/\s+/g, ' ').trim();
+
+const ACCENTS = ['#4fd4c4', '#f2b36f', '#7b61ff', '#59c3c3'];
+
+const projects = [
+  {
+    title: 'Project title',
+    description: clean(`
+      A short placeholder description of this project, what it does and the problem it solves.
+      Swap this out for the real story once you have it.
+    `),
+    tech: ['Flutter', 'Dart', 'Firebase'],
+    outcome: clean(`
+      A short placeholder outcome describing the impact or success of this project.
+    `),
+  },
+  {
+    title: 'Project title',
+    description: clean(`
+      A short placeholder description of this project, what it does and the problem it solves.
+      Swap this out for the real story once you have it.
+    `),
+    tech: ['React', 'Dotnet', 'Postgres'],
+    outcome: clean(`
+      A short placeholder outcome describing the impact or success of this project.
+    `),
+  },
+  {
+    title: 'Project title',
+    description: clean(`
+      A short placeholder description of this project, what it does and the problem it solves.
+      Swap this out for the real story once you have it.
+    `),
+    tech: ['Astro', 'Node.js', 'MongoDB'],
+    outcome: clean(`
+      A short placeholder outcome describing the impact or success of this project.
+    `),
+  },
+  {
+    title: 'Project title',
+    description: clean(`
+      A short placeholder description of this project, what it does and the problem it solves.
+      Swap this out for the real story once you have it.
+    `),
+    tech: ['Python', 'AWS Lambda', 'S3'],
+    outcome: clean(`
+      A short placeholder outcome describing the impact or success of this project.
+    `),
+  },
+  {
+    title: 'Project title',
+    description: clean(`
+      A short placeholder description of this project, what it does and the problem it solves.
+      Swap this out for the real story once you have it.
+    `),
+    tech: ['TypeScript', 'React', 'Next.js'],
+    outcome: clean(`
+      A short placeholder outcome describing the impact or success of this project.
+    `),
+  },
+  {
+    title: 'Project title',
+    description: clean(`
+      A short placeholder description of this project, what it does and the problem it solves.
+      Swap this out for the real story once you have it.
+    `),
+    tech: ['Flutter', 'Dotnet', 'AWS RDS'],
+    outcome: clean(`
+      A short placeholder outcome describing the impact or success of this project.
+    `),
+  },
+  {
+    title: 'Project title',
+    description: clean(`
+      A short placeholder description of this project, what it does and the problem it solves.
+      Swap this out for the real story once you have it.
+    `),
+    tech: ['C#', 'Dotnet', 'SQS'],
+    outcome: clean(`
+      A short placeholder outcome describing the impact or success of this project.
+    `),
+  },
+  {
+    title: 'Project title',
+    description: clean(`
+      A short placeholder description of this project, what it does and the problem it solves.
+      Swap this out for the real story once you have it.
+    `),
+    tech: ['Python', 'Pandas', 'Scikit-learn'],
+    outcome: clean(`
+      A short placeholder outcome describing the impact or success of this project.
+    `),
+  },
+];
+---
+
+<Blurb id="projects" align="right" title="Projects I'm proud of">
+  <p>
+    A handful of projects, big and small, that I've enjoyed building over the years.
+  </p>
+
+  <div class="project-carousel">
+    <button class="project-nav project-nav--prev" type="button" aria-label="Previous project" data-dir="-1">
+      <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M15 6l-6 6 6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+      </svg>
+    </button>
+
+    <ul class="project-track">
+      {projects.map((item, i) => (
+        <li class="project-card" style={`--accent: ${ACCENTS[i % ACCENTS.length]};`}>
+          <h3>{item.title}</h3>
+          <p>{item.description}</p>
+          <div class="project-chip-list">
+            {item.tech.map((label) => (
+              <TechChip label={label} />
+            ))}
+          </div>
+          <div class="project-outcome">
+            <p class="project-outcome-title">Outcome</p>
+            <p>{item.outcome}</p>
+          </div>
+        </li>
+      ))}
+    </ul>
+
+    <button class="project-nav project-nav--next" type="button" aria-label="Next project" data-dir="1">
+      <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+      </svg>
+    </button>
+  </div>
+</Blurb>
+
+<script>
+  document.querySelectorAll<HTMLElement>('.project-carousel').forEach((carousel) => {
+    const trackEl = carousel.querySelector<HTMLElement>('.project-track');
+    if (!trackEl) return;
+    const track = trackEl;
+
+    // Above this width the CSS switches .project-track to a static grid — no scrolling,
+    // so the carousel behaviour (drag, auto-advance) should stay out of the way entirely.
+    const gridModeQuery = window.matchMedia('(min-width: 780px)');
+    const isGridMode = () => gridModeQuery.matches;
+
+    function cardStep() {
+      const card = track.querySelector('.project-card');
+      return card ? card.getBoundingClientRect().width + 22 : track.clientWidth;
+    }
+
+    function scrollByCards(dir: number) {
+      track.scrollBy({ left: dir * cardStep(), behavior: 'smooth' });
+    }
+
+    carousel.querySelectorAll('.project-nav').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        scrollByCards(Number(btn.getAttribute('data-dir') ?? '1'));
+      });
+    });
+
+    let isDragging = false;
+    let dragMoved = false;
+    let dragStartX = 0;
+    let dragStartScroll = 0;
+
+    track.addEventListener('pointerdown', (e) => {
+      if (isGridMode()) return;
+      if (e.pointerType !== 'mouse') return;
+      if (e.target instanceof HTMLElement && e.target.closest('a, button')) return;
+      isDragging = true;
+      dragMoved = false;
+      dragStartX = e.clientX;
+      dragStartScroll = track.scrollLeft;
+      track.setPointerCapture(e.pointerId);
+      track.classList.add('is-dragging');
+    });
+
+    track.addEventListener('pointermove', (e) => {
+      if (!isDragging) return;
+      const delta = e.clientX - dragStartX;
+      if (Math.abs(delta) > 8) dragMoved = true;
+      track.scrollLeft = dragStartScroll - delta;
+    });
+
+    function endDrag() {
+      if (!isDragging) return;
+      isDragging = false;
+      track.classList.remove('is-dragging');
+
+      const delta = track.scrollLeft - dragStartScroll;
+      const threshold = cardStep() * 0.2;
+      let target = dragStartScroll;
+
+      if (Math.abs(delta) > threshold) {
+        target = dragStartScroll + (delta > 0 ? cardStep() : -cardStep());
+      }
+
+      target = Math.max(0, Math.min(target, track.scrollWidth - track.clientWidth));
+      track.scrollTo({ left: target, behavior: 'smooth' });
+    }
+
+    track.addEventListener('pointerup', endDrag);
+    track.addEventListener('pointercancel', endDrag);
+
+    track.addEventListener('click', (e) => {
+      if (dragMoved) {
+        e.preventDefault();
+        e.stopPropagation();
+      }
+    }, true);
+
+    let idleTimer: ReturnType<typeof setTimeout> | null = null;
+
+    function autoAdvance() {
+      const atEnd = track.scrollLeft + track.clientWidth >= track.scrollWidth - 4;
+      if (atEnd) {
+        track.scrollTo({ left: 0, behavior: 'smooth' });
+      } else {
+        scrollByCards(1);
+      }
+      scheduleAutoScroll();
+    }
+
+    function scheduleAutoScroll() {
+      if (idleTimer) clearTimeout(idleTimer);
+      if (isGridMode()) return;
+      idleTimer = setTimeout(autoAdvance, 5000);
+    }
+
+    function pauseAutoScroll() {
+      if (idleTimer) clearTimeout(idleTimer);
+      idleTimer = null;
+    }
+
+    ['pointerdown', 'touchstart', 'wheel', 'keydown'].forEach((evt) => {
+      carousel.addEventListener(evt, scheduleAutoScroll, { passive: true });
+    });
+    carousel.addEventListener('pointerenter', pauseAutoScroll);
+    carousel.addEventListener('pointerleave', scheduleAutoScroll);
+
+    scheduleAutoScroll();
+  });
+</script>

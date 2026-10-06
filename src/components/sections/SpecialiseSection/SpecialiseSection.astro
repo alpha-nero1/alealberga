@@ -1,5 +1,6 @@
 ---
 import Blurb from '../../Blurb.astro';
+import TechChip from '../../TechChip.astro';
 import './SpecialiseSection.css';
 
 // Reason copy is written as multiline template literals for easier review/editing,
@@ -14,16 +15,7 @@ const languages = [
       vanilla JS for simple but elegant solutions to react.js for sophisticated UI, JavaScript
       has the power to knock the user's socks off which is why I love it.
     `),
-    logos: [
-      { label: 'JS', bg: '#F7DF1E', fg: '#1a1a1a' },
-      { label: 'TS', bg: '#3178C6', fg: '#ffffff' },
-    ],
-    frameworks: [
-      { label: 'React', bg: '#3178C6', fg: '#ffffff' },
-      { label: 'Next.js', bg: '#111111', fg: '#ffffff' },
-      { label: 'Node.js', bg: '#F7DF1E', fg: '#1a1a1a' },
-      { label: 'Astro', bg: '#FF5D01', fg: '#ffffff' },
-    ],
+    frameworks: ['React', 'Next.js', 'Node.js', 'Astro'],
   },
   {
     name: 'Python',
@@ -32,13 +24,7 @@ const languages = [
       AI, Python has proven itself time and time again to be a robust and flexible language
       allowing for untapped levels of creativity. It is one of my dearest.
     `),
-    logos: [{ label: 'Py', bg: '#4B8B3B', fg: '#ffffff' }],
-    frameworks: [
-      { label: 'Pandas', bg: '#4B8B3B', fg: '#ffffff' },
-      { label: 'Firebase', bg: '#FFCA28', fg: '#1a1a1a' },
-      { label: 'OpenAI', bg: '#150458', fg: '#ffffff' },
-      { label: 'Scikit-learn', bg: '#3178C6', fg: '#ffffff' },
-    ],
+    frameworks: ['Pandas', 'Firebase', 'OpenAI', 'Scikit-learn'],
   },
   {
     name: 'CSharp',
@@ -46,10 +32,7 @@ const languages = [
       A heavy hitter in writing backend solutions, this strongly typed but succinct language brings sophisticated backend solutions to life, 
       and who doesn't love that!
     `),
-    logos: [{ label: 'C#', bg: '#684DBA', fg: '#ffffff' }, { label: 'Dotnet', bg: '#684DBA', fg: '#ffffff' }],
-    frameworks: [
-      { label: 'Dotnet', bg: '#684DBA', fg: '#ffffff' },
-    ],
+    frameworks: ['Dotnet'],
   },
   {
     name: 'Dart',
@@ -58,10 +41,7 @@ const languages = [
       easiest it has ever been, it's purpose built and is exceptional for high performance animations,
       this is my go-to for new mobile apps.
     `),
-    logos: [{ label: 'Dart', bg: '#0175C2', fg: '#ffffff' }, { label: 'Flutter', bg: '#0175C2', fg: '#ffffff' }],
-    frameworks: [
-      { label: 'Flutter', bg: '#0175C2', fg: '#ffffff' },
-    ],
+    frameworks: ['Flutter'],
   },
 ];
 
@@ -73,13 +53,7 @@ const cloudAndData = [
       has a lot going for it. For better or for worse, AWS is the main cloud provider I have used over my
       career, from building SEO performant solutions to ensuring that ordering systems are future-proof.
     `),
-    frameworks: [
-      { label: 'EC2', bg: '#FF9900', fg: '#1a1a1a' },
-      { label: 'Lambda', bg: '#FF9900', fg: '#1a1a1a' },
-      { label: 'S3', bg: '#FF9900', fg: '#1a1a1a' },
-      { label: 'RDS', bg: '#FF9900', fg: '#1a1a1a' },
-      { label: 'SQS', bg: '#FF9900', fg: '#1a1a1a' },
-    ],
+    frameworks: ['EC2', 'Lambda', 'S3', 'RDS', 'SQS'],
   },
   {
     name: 'Postgres',
@@ -136,9 +110,7 @@ const groups = [
                 <p class="frameworks-title">Specific frameworks</p>
                 <div class="framework-list">
                   {item.frameworks.map((framework) => (
-                    <span class="framework-chip" style={`background:${framework.bg}; color:${framework.fg};`}>
-                      {framework.label}
-                    </span>
+                    <TechChip label={framework} />
                   ))}
                 </div>
               </>

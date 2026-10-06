@@ -8,7 +8,7 @@ const previews = (await getCollection('blog', ({ data }) => !data.draft))
   .slice(0, 2);
 ---
 
-<Blurb id="blogs" align="right" title="From the blog">
+<Blurb id="blogs" align="left" title="From the blog">
   <p>Thoughts on the tech of today, the tools I can't stop talking about, and where I think it's all headed</p>
   <div class="blog-preview-list">
     {previews.map((post) => (

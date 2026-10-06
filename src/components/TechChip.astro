@@ -1,0 +1,59 @@
+---
+interface Props {
+  label: string;
+}
+
+const { label } = Astro.props;
+
+// Centralised so every chip across the site (Specialise, Projects, ...) looks identical
+// and uses the same brand colour for a given technology.
+const TECH_COLORS: Record<string, { bg: string; fg: string }> = {
+  'JS': { bg: '#F7DF1E', fg: '#1a1a1a' },
+  'TS': { bg: '#3178C6', fg: '#ffffff' },
+  'TypeScript': { bg: '#3178C6', fg: '#ffffff' },
+  'React': { bg: '#3178C6', fg: '#ffffff' },
+  'Next.js': { bg: '#111111', fg: '#ffffff' },
+  'Node.js': { bg: '#F7DF1E', fg: '#1a1a1a' },
+  'Astro': { bg: '#FF5D01', fg: '#ffffff' },
+  'Py': { bg: '#4B8B3B', fg: '#ffffff' },
+  'Python': { bg: '#4B8B3B', fg: '#ffffff' },
+  'Pandas': { bg: '#4B8B3B', fg: '#ffffff' },
+  'Firebase': { bg: '#FFCA28', fg: '#1a1a1a' },
+  'OpenAI': { bg: '#150458', fg: '#ffffff' },
+  'Scikit-learn': { bg: '#3178C6', fg: '#ffffff' },
+  'C#': { bg: '#684DBA', fg: '#ffffff' },
+  'Dotnet': { bg: '#684DBA', fg: '#ffffff' },
+  'Dart': { bg: '#0175C2', fg: '#ffffff' },
+  'Flutter': { bg: '#0175C2', fg: '#ffffff' },
+  'AWS': { bg: '#FF9900', fg: '#1a1a1a' },
+  'EC2': { bg: '#FF9900', fg: '#1a1a1a' },
+  'Lambda': { bg: '#FF9900', fg: '#1a1a1a' },
+  'AWS Lambda': { bg: '#FF9900', fg: '#1a1a1a' },
+  'S3': { bg: '#FF9900', fg: '#1a1a1a' },
+  'RDS': { bg: '#FF9900', fg: '#1a1a1a' },
+  'AWS RDS': { bg: '#FF9900', fg: '#1a1a1a' },
+  'SQS': { bg: '#FF9900', fg: '#1a1a1a' },
+  'Postgres': { bg: '#336791', fg: '#ffffff' },
+  'MongoDB': { bg: '#47A248', fg: '#ffffff' },
+};
+
+const FALLBACK = { bg: '#2a4260', fg: '#ffffff' };
+const { bg, fg } = TECH_COLORS[label] ?? FALLBACK;
+---
+
+<span class="tech-chip" style={`background:${bg}; color:${fg};`}>{label}</span>
+
+<style>
+  .tech-chip {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 1.8rem;
+    padding: 0 0.65rem;
+    border-radius: 999px;
+    font-size: 0.7rem;
+    font-weight: 800;
+    letter-spacing: 0.01em;
+    box-shadow: 0 6px 14px rgba(2, 7, 20, 0.35);
+  }
+</style>

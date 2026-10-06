@@ -1,0 +1,142 @@
+.project-carousel {
+  margin-top: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.project-track {
+  flex: 1;
+  min-width: 0;
+  margin: 0;
+  padding: 0.3rem 1.1rem 1.3rem 0.1rem;
+  display: flex;
+  gap: 1.4rem;
+  list-style: none;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  cursor: grab;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(79, 212, 196, 0.3) transparent;
+}
+
+.project-track.is-dragging {
+  scroll-snap-type: none;
+  cursor: grabbing;
+  user-select: none;
+}
+
+@media (pointer: fine) {
+  .project-track {
+    scroll-snap-type: none;
+  }
+}
+
+.project-card {
+  flex: 0 0 auto;
+  width: min(300px, 80vw);
+  display: flex;
+  flex-direction: column;
+  padding: 0.85rem 1rem;
+  border: 1px solid var(--edge);
+  border-radius: 14px;
+  background: rgba(10, 26, 45, 0.4);
+  scroll-snap-align: start;
+}
+
+.project-card h3 {
+  margin: 0;
+  font-size: 1rem;
+  color: var(--ink);
+}
+
+.project-card > p {
+  margin: 0.45rem 0 0;
+  color: var(--ink-soft);
+  font-size: 0.85rem;
+  line-height: 1.5;
+}
+
+.project-chip-list {
+  margin-top: 0.7rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.project-outcome {
+  margin-top: 0.9rem;
+  padding: 0.65rem 0.8rem;
+  border-left: 3px solid var(--accent);
+  border-radius: 0 10px 10px 0;
+  background: rgba(79, 212, 196, 0.08);
+}
+
+.project-outcome-title {
+  margin: 0;
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.project-outcome p:not(.project-outcome-title) {
+  margin: 0.3rem 0 0;
+  color: var(--ink-soft);
+  font-size: 0.82rem;
+  line-height: 1.5;
+}
+
+.project-nav {
+  flex: 0 0 auto;
+  width: 2.2rem;
+  height: 2.2rem;
+  border: 1px solid var(--edge);
+  border-radius: 50%;
+  background: rgba(10, 26, 45, 0.6);
+  color: var(--ink-soft);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 160ms ease, color 160ms ease;
+}
+
+.project-nav svg {
+  width: 1.1rem;
+  height: 1.1rem;
+}
+
+.project-nav:hover {
+  background: rgba(79, 212, 196, 0.14);
+  color: #f6fcff;
+}
+
+@media (max-width: 640px) {
+  .project-nav {
+    display: none;
+  }
+}
+
+/* Enough real estate for a static grid — drop the carousel/scroll behaviour entirely. */
+@media (min-width: 780px) {
+  .project-nav {
+    display: none;
+  }
+
+  .project-track {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.9rem;
+    overflow: visible;
+    cursor: default;
+    scroll-snap-type: none;
+    padding: 0.3rem 0 0.6rem;
+  }
+
+  .project-card {
+    width: auto;
+  }
+}
