@@ -3,143 +3,178 @@ import Blurb from '../../Blurb.astro';
 import TechChip from '../../TechChip.astro';
 import './ProjectsSection.css';
 
-// Description/outcome copy is written as multiline template literals for easier review/editing,
+// Description copy is written as multiline template literals for easier review/editing,
 // then collapsed back into flowing single-line paragraph text for rendering.
 const clean = (text: string) => text.replace(/\s+/g, ' ').trim();
 
 const ACCENTS = ['#4fd4c4', '#f2b36f', '#7b61ff', '#59c3c3'];
 
-const projects = [
+const webProjects = [
   {
-    title: 'Project title',
+    title: 'Legal Reports Ecommerce Website',
     description: clean(`
-      A short placeholder description of this project, what it does and the problem it solves.
-      Swap this out for the real story once you have it.
+      For ~5 years I managed and lead development of a B2C Ecommerce website
+      providing legal reports to consumers so the average Joe could perform their
+      own legal due dilligence.
     `),
-    tech: ['Flutter', 'Dart', 'Firebase'],
-    outcome: clean(`
-      A short placeholder outcome describing the impact or success of this project.
-    `),
+    tech: ['React', 'Next.js', 'Dotnet', 'Postgres', 'SQS'],
   },
   {
-    title: 'Project title',
+    title: 'SEO Property Pages',
     description: clean(`
-      A short placeholder description of this project, what it does and the problem it solves.
-      Swap this out for the real story once you have it.
+      Using Next.js and dotnet backed by S3 documents, I architected an SEO initiative aiming to index
+      a page for every address in Australia reaching a total of 1 million indexed pages!
     `),
-    tech: ['React', 'Dotnet', 'Postgres'],
-    outcome: clean(`
-      A short placeholder outcome describing the impact or success of this project.
-    `),
+    tech: ['Next.js', 'Dotnet', 'S3', 'Python'],
   },
   {
-    title: 'Project title',
+    title: 'Payment Gateway',
     description: clean(`
-      A short placeholder description of this project, what it does and the problem it solves.
-      Swap this out for the real story once you have it.
+      Designed and implemented a cross-platform payments gateway supporting Apple Pay,
+      Google Pay, PayPal, invoices, refunds and fraud prevention mechanisms such as 3D secure payments.
     `),
-    tech: ['Astro', 'Node.js', 'MongoDB'],
-    outcome: clean(`
-      A short placeholder outcome describing the impact or success of this project.
-    `),
+    tech: ['Dotnet', 'Postgres', 'Braintree'],
   },
   {
-    title: 'Project title',
+    title: 'MCP Server & App',
     description: clean(`
-      A short placeholder description of this project, what it does and the problem it solves.
-      Swap this out for the real story once you have it.
+      Architected and built an MCP server layer solution and app for integration with large AI
+      platforms like OpenAI, Claude and Gemini
     `),
-    tech: ['Python', 'AWS Lambda', 'S3'],
-    outcome: clean(`
-      A short placeholder outcome describing the impact or success of this project.
+    tech: ['Dotnet', 'React'],
+  },
+];
+
+const pythonProjects = [
+  {
+    title: 'Agentic Customer Service Chat',
+    description: clean(`
+      Levergaing LLMs with LangGraph I architected and built a customer service chat workflow to greatly
+      improve customer support efficiency and response time.
     `),
+    tech: ['Python', 'OpenAI', 'LangGraph'],
   },
   {
-    title: 'Project title',
+    title: 'Fraud Prevention System',
     description: clean(`
-      A short placeholder description of this project, what it does and the problem it solves.
-      Swap this out for the real story once you have it.
+      Using Pandas & Scikit-Learn I built a fraud protection ML model trained on thousands
+      of labeled datapoints succesfully reducing the fraud incurred on a consumer facing
+      ecommerce website.
     `),
-    tech: ['TypeScript', 'React', 'Next.js'],
-    outcome: clean(`
-      A short placeholder outcome describing the impact or success of this project.
-    `),
+    tech: ['Python', 'Pandas', 'Scikit-Learn', 'MySQL'],
   },
   {
-    title: 'Project title',
+    title: 'Smart Search System',
     description: clean(`
-      A short placeholder description of this project, what it does and the problem it solves.
-      Swap this out for the real story once you have it.
+      Using historical labeled data I built and deployed an ML model capable of classifying user input
+      to enhance the user experience of an eCommerce website.
     `),
-    tech: ['Flutter', 'Dotnet', 'AWS RDS'],
-    outcome: clean(`
-      A short placeholder outcome describing the impact or success of this project.
+    tech: ['Python', 'Pandas', 'Scikit-Learn', 'MySQL'],
+  }
+];
+
+const mobileProjects = [
+  {
+    title: 'Social consumer app',
+    description: clean(`
+      Lead and architected development of a high performance social consumer app featuring peer to peer transactions
+      and custom animations in the Impeller rendering engine.
     `),
+    tech: ['Flutter', 'Java', 'Postgres', 'iOS', 'Android'],
   },
   {
-    title: 'Project title',
+    title: 'FluenSi Language App',
     description: clean(`
-      A short placeholder description of this project, what it does and the problem it solves.
-      Swap this out for the real story once you have it.
+      Soon to be released to the appstore, this language app makes use of Flutter and LLMs in firebase serverless
+      functions to provide an exeptional language learning experience.
     `),
-    tech: ['C#', 'Dotnet', 'SQS'],
-    outcome: clean(`
-      A short placeholder outcome describing the impact or success of this project.
-    `),
+    tech: ['Flutter', 'Firebase', 'Python', 'OpenAI', 'iOS'],
   },
-  {
-    title: 'Project title',
-    description: clean(`
-      A short placeholder description of this project, what it does and the problem it solves.
-      Swap this out for the real story once you have it.
-    `),
-    tech: ['Python', 'Pandas', 'Scikit-learn'],
-    outcome: clean(`
-      A short placeholder outcome describing the impact or success of this project.
-    `),
-  },
+];
+
+const groups = [
+  { id: 'web', label: 'React & Dotnet', items: webProjects },
+  { id: 'python', label: 'Python', items: pythonProjects },
+  { id: 'mobile', label: 'Flutter and Dart', items: mobileProjects },
 ];
 ---
 
-<Blurb id="projects" align="right" title="Projects I'm proud of">
+<Blurb id="projects" align="right" title="Project highlight">
   <p>
     A handful of projects, big and small, that I've enjoyed building over the years.
   </p>
 
-  <div class="project-carousel">
-    <button class="project-nav project-nav--prev" type="button" aria-label="Previous project" data-dir="-1">
-      <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-        <path d="M15 6l-6 6 6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-      </svg>
-    </button>
-
-    <ul class="project-track">
-      {projects.map((item, i) => (
-        <li class="project-card" style={`--accent: ${ACCENTS[i % ACCENTS.length]};`}>
-          <h3>{item.title}</h3>
-          <p>{item.description}</p>
-          <div class="project-chip-list">
-            {item.tech.map((label) => (
-              <TechChip label={label} />
-            ))}
-          </div>
-          <div class="project-outcome">
-            <p class="project-outcome-title">Outcome</p>
-            <p>{item.outcome}</p>
-          </div>
-        </li>
+  <div class="project-tabbed">
+    <div class="project-tabs" role="tablist" aria-label="Project tech stack categories">
+      {groups.map((group, i) => (
+        <button
+          type="button"
+          role="tab"
+          class={`project-tab${i === 0 ? ' is-active' : ''}`}
+          data-tab={group.id}
+          aria-selected={i === 0 ? 'true' : 'false'}
+        >
+          {group.label}
+        </button>
       ))}
-    </ul>
+    </div>
 
-    <button class="project-nav project-nav--next" type="button" aria-label="Next project" data-dir="1">
-      <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-        <path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-      </svg>
-    </button>
+    {groups.map((group, i) => (
+      <div class="project-panel" data-panel={group.id} hidden={i !== 0}>
+        <div class="project-carousel">
+          <button class="project-nav project-nav--prev" type="button" aria-label="Previous project" data-dir="-1">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M15 6l-6 6 6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </button>
+
+          <ul class="project-track">
+            {group.items.map((item, j) => (
+              <li class="project-card" style={`--accent: ${ACCENTS[j % ACCENTS.length]};`}>
+                <h3>{item.title}</h3>
+                <p>{item.description}</p>
+                <div class="project-chip-list">
+                  {item.tech.map((label) => (
+                    <TechChip label={label} />
+                  ))}
+                </div>
+              </li>
+            ))}
+          </ul>
+
+          <button class="project-nav project-nav--next" type="button" aria-label="Next project" data-dir="1">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </button>
+        </div>
+      </div>
+    ))}
   </div>
 </Blurb>
 
 <script>
+  document.querySelectorAll<HTMLElement>('.project-tabbed').forEach((wrap) => {
+    const tabs = wrap.querySelectorAll<HTMLButtonElement>('.project-tab');
+    const panels = wrap.querySelectorAll<HTMLElement>('.project-panel');
+
+    tabs.forEach((tab) => {
+      tab.addEventListener('click', () => {
+        const target = tab.dataset.tab;
+
+        tabs.forEach((t) => {
+          const isActive = t === tab;
+          t.classList.toggle('is-active', isActive);
+          t.setAttribute('aria-selected', String(isActive));
+        });
+
+        panels.forEach((panel) => {
+          panel.hidden = panel.dataset.panel !== target;
+        });
+      });
+    });
+  });
+
   document.querySelectorAll<HTMLElement>('.project-carousel').forEach((carousel) => {
     const trackEl = carousel.querySelector<HTMLElement>('.project-track');
     if (!trackEl) return;
@@ -219,11 +254,15 @@ const projects = [
     let idleTimer: ReturnType<typeof setTimeout> | null = null;
 
     function autoAdvance() {
-      const atEnd = track.scrollLeft + track.clientWidth >= track.scrollWidth - 4;
-      if (atEnd) {
-        track.scrollTo({ left: 0, behavior: 'smooth' });
-      } else {
-        scrollByCards(1);
+      // Skip the scroll while this carousel's tab panel is hidden, but keep
+      // rescheduling so it picks back up as soon as its tab is active again.
+      if (carousel.offsetParent !== null) {
+        const atEnd = track.scrollLeft + track.clientWidth >= track.scrollWidth - 4;
+        if (atEnd) {
+          track.scrollTo({ left: 0, behavior: 'smooth' });
+        } else {
+          scrollByCards(1);
+        }
       }
       scheduleAutoScroll();
     }

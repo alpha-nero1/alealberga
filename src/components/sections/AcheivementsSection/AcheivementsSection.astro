@@ -13,9 +13,9 @@ const clean = (text: string) => text.replace(/\s+/g, ' ').trim();
 
 const achievements = [
   {
-    title: 'FluentSRS | An app for language enthusiasts',
+    title: 'FluenSi | An app for language enthusiasts',
     description: clean(`
-      FluentSRS is a mobile app aimed at revolutionising language learning
+      FluenSi is a mobile app aimed at revolutionising language learning
       putting the focus back on speaking and continual improvement, bringing the user ever closer to a native speaking
       level of fluency. The app I wanted for learning languages didn't exist, so, I built it!
     `),
@@ -118,7 +118,8 @@ const achievements = [
           </div>
           <div class="achievement-card-body">
             <h3>{item.title}</h3>
-            <p>{item.description}</p>
+            <p class="achievement-description">{item.description}</p>
+            <button type="button" class="achievement-expand" aria-expanded="false">Read more</button>
           </div>
           <div class="achievement-card-footer">
             <span class="achievement-chip">{item.year}</span>
@@ -155,6 +156,17 @@ const achievements = [
     carousel.querySelectorAll('.achievement-nav').forEach((btn) => {
       btn.addEventListener('click', () => {
         scrollByCards(Number(btn.getAttribute('data-dir') ?? '1'));
+      });
+    });
+
+    carousel.querySelectorAll<HTMLButtonElement>('.achievement-expand').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const description = btn.previousElementSibling;
+        if (!(description instanceof HTMLElement)) return;
+
+        const expanded = description.classList.toggle('is-expanded');
+        btn.textContent = expanded ? 'Show less' : 'Read more';
+        btn.setAttribute('aria-expanded', String(expanded));
       });
     });
 

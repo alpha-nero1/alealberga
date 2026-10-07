@@ -52,10 +52,10 @@ Of course the one negative for most is that you then need to learn `Dart`, meani
   <figcaption>Flutter!</figcaption>
 </figure>
 
-## Case Study - FluentSRS
+## Case Study - FluenSi
 Wondering how this applies to a real life example? I've got you covered my friend.
 
-<a href="https://preview.fluentsrs.pages.dev" target="_blank">FluentSRS</a> is a language learning app I came up with which puts the focus back on speaking the language you are learning, backed by a
+<a href="https://preview.fluentsrs.pages.dev" target="_blank">FluenSi</a> is a language learning app I came up with which puts the focus back on speaking the language you are learning, backed by a
 classic Spaced Repetition System (SRS) algorithm.
 
 This is a short list of primary app functionality that Firebase was able to cover for me.

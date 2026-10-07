@@ -84,6 +84,37 @@
   line-height: 1.5;
 }
 
+.achievement-description {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.achievement-description.is-expanded {
+  display: block;
+  -webkit-line-clamp: unset;
+  overflow: visible;
+}
+
+.achievement-expand {
+  appearance: none;
+  border: none;
+  background: none;
+  padding: 0;
+  margin-top: 0.35rem;
+  color: var(--accent);
+  font-size: 0.78rem;
+  font-weight: 700;
+  cursor: pointer;
+  text-align: left;
+  transition: color 160ms ease;
+}
+
+.achievement-expand:hover {
+  color: #f6fcff;
+}
+
 .achievement-card-footer {
   position: absolute;
   left: 0.9rem;
