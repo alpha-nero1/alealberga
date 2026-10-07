@@ -35,7 +35,7 @@ const personSchema = {
 	alternateName: 'Ale Alberga',
 	url: 'https://alealberga.com',
 	image: imageURL.toString(),
-	jobTitle: 'Senior Software Engineer',
+	jobTitle: 'Senior Software Engineer & Tech Lead',
 	sameAs: [
 		'https://github.com/alpha-nero1',
 		'https://www.linkedin.com/in/alessandro-alberga-0a3b23117/',
@@ -132,6 +132,19 @@ const personSchema = {
 	</body>
 </html>
 
+<script>
+	const header = document.querySelector<HTMLElement>('.site-header');
+
+	if (header) {
+		const setHeaderHeight = () => {
+			document.documentElement.style.setProperty('--header-height', `${header.offsetHeight}px`);
+		};
+
+		setHeaderHeight();
+		new ResizeObserver(setHeaderHeight).observe(header);
+	}
+</script>
+
 <style>
 	html,
 	body {
@@ -140,6 +153,7 @@ const personSchema = {
 		height: 100%;
 		overflow-x: hidden;
 		scroll-behavior: smooth;
+		scroll-padding-top: calc(var(--header-height, 88px) + 0.75rem);
 	}
 
 	body {

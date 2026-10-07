@@ -1,6 +1,6 @@
 # Ale Alberga
 
-> Portfolio site for Alessandro (Ale) Alberga, a Sydney-based Senior Software Engineer specialising in Flutter, front-end architecture, and full-stack development.
+> Portfolio site for Alessandro (Ale) Alberga, a Sydney-based Senior Software Engineer and Tech Lead specialising in Flutter, front-end architecture, and full-stack development.
 
 Ale is currently leading front-end app development at Mates.com, a greenfield startup. Previously he worked at InfoTrack (senior engineer, then team leadership) and Allon Pacific. He specialises in JavaScript/TypeScript, Python, C#, and Dart, with cloud and database experience in AWS, Postgres, and MongoDB.
 
