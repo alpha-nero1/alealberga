@@ -13,6 +13,18 @@ const clean = (text: string) => text.replace(/\s+/g, ' ').trim();
 
 const achievements = [
   {
+    title: 'Associate AWS Solutions Architect | AWS',
+    description: clean(`
+      The SAA-C03 certification is an important certification from AWS, certifying that the holder understands the AWS ecosystem
+      and the exact tech to bring to the table to implement resilient, scalable and high performant solutions.
+    `),
+    year: '2024',
+    accent: '#f2b36f',
+    link: 'https://docs.aws.amazon.com/aws-certification/latest/solutions-architect-associate-03/solutions-architect-associate-03.html',
+    image: solutionsArchitectImage,
+    imageFit: 'contain',
+  },
+  {
     title: 'FluenSi | An app for language enthusiasts',
     description: clean(`
       FluenSi is a mobile app aimed at revolutionising language learning
@@ -46,17 +58,6 @@ const achievements = [
     accent: '#4fd4c4',
     link: 'https://www.udemy.com/course/the-complete-agentic-ai-engineering-course',
     image: udemyImage
-  },
-  {
-    title: 'Associate AWS Solutions Architect | AWS',
-    description: clean(`
-      The SAA-C03 certification is an important certification from AWS, certifying that the holder understands the AWS ecosystem
-      and the exact tech to bring to the table to implement resilient, scalable and high performant solutions.
-    `),
-    year: '2024',
-    accent: '#f2b36f',
-    link: 'https://docs.aws.amazon.com/aws-certification/latest/solutions-architect-associate-03/solutions-architect-associate-03.html',
-    image: solutionsArchitectImage,
   },
   {
     title: 'Python for Machine Learning & Data Science Masterclass | Udemy',
@@ -114,7 +115,13 @@ const achievements = [
         return (
         <li class="achievement-card" style={`--accent: ${item.accent}; --tilt: 0deg;`}>
           <div class="achievement-card-image" style={`background: linear-gradient(150deg, ${item.accent}33, ${item.accent}0d);`}>
-            {item.image && <img src={item.image.src} alt={item.title} />}
+            {item.image && (
+              <img
+                src={item.image.src}
+                alt={item.title}
+                style={item.imageFit ? `object-fit: ${item.imageFit};` : undefined}
+              />
+            )}
           </div>
           <div class="achievement-card-body">
             <h3>{item.title}</h3>
