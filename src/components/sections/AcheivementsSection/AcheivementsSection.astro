@@ -226,35 +226,5 @@ const achievements = [
         e.stopPropagation();
       }
     }, true);
-
-    let idleTimer: ReturnType<typeof setTimeout> | null = null;
-
-    function autoAdvance() {
-      const atEnd = track.scrollLeft + track.clientWidth >= track.scrollWidth - 4;
-      if (atEnd) {
-        track.scrollTo({ left: 0, behavior: 'smooth' });
-      } else {
-        scrollByCards(1);
-      }
-      scheduleAutoScroll();
-    }
-
-    function scheduleAutoScroll() {
-      if (idleTimer) clearTimeout(idleTimer);
-      idleTimer = setTimeout(autoAdvance, 5000);
-    }
-
-    function pauseAutoScroll() {
-      if (idleTimer) clearTimeout(idleTimer);
-      idleTimer = null;
-    }
-
-    ['pointerdown', 'touchstart', 'wheel', 'keydown'].forEach((evt) => {
-      carousel.addEventListener(evt, scheduleAutoScroll, { passive: true });
-    });
-    carousel.addEventListener('pointerenter', pauseAutoScroll);
-    carousel.addEventListener('pointerleave', scheduleAutoScroll);
-
-    scheduleAutoScroll();
   });
 </script>
